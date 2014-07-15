@@ -1,9 +1,9 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Standard Assets\Character Controllers\Sources\Scripts\PlatformInputController.js">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="..\..\RasmusLek\Assets\Kinect\GetIt.cs">
     <Files>
-      <File FileName="Assets\Standard Assets\Character Controllers\Sources\Scripts\PlatformInputController.js" Line="35" Column="1" />
-      <File FileName="Assets\sc_viktor_collision.cs" Line="1" Column="1" />
+      <File FileName="Assets\Standard Assets\Scripts\RoundRound.cs" Line="22" Column="1" />
+      <File FileName="..\..\RasmusLek\Assets\Kinect\GetIt.cs" Line="8" Column="19" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

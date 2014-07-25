@@ -1,8 +1,17 @@
 ﻿<Properties>
+<<<<<<< HEAD
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
   <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Standard Assets\Character Controllers\Sources\Scripts\FPSInputController.js">
     <Files>
       <File FileName="Assets\Standard Assets\Character Controllers\Sources\Scripts\FPSInputController.js" Line="33" Column="2" />
+=======
+  <MonoDevelop.Ide.Workspace />
+  <MonoDevelop.Ide.Workbench ActiveDocument="..\Project-Alix\Assets\RasmusGUI\More\ObjectTrigger.cs">
+    <Files>
+      <File FileName="..\Project-Alix\Assets\Project Assets\Scripts\Character\FlashLight\FlashLightObject.cs" Line="10" Column="54" />
+      <File FileName="..\Project-Alix\Assets\Project Assets\Scripts\Triggers\TriggerTypes\CollaborateTrigger.cs" Line="85" Column="53" />
+      <File FileName="..\Project-Alix\Assets\RasmusGUI\More\ObjectTrigger.cs" Line="62" Column="38" />
+>>>>>>> 49611f565310e2f5184a9ac02eaa15c5c2abc0dc
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

@@ -19,3 +19,4 @@
 /Library/ScriptAssemblies
 /obj
 /Temp
+*.csproj

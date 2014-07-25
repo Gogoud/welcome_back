@@ -11,10 +11,13 @@ ModelImporter:
     400004: //RootNode
     2300000: Prop_BrokenCoffeetable1
     2300002: Prop_BrokenCoffeetable2
+    2300004: //RootNode
     3300000: Prop_BrokenCoffeetable1
     3300002: Prop_BrokenCoffeetable2
+    3300004: //RootNode
     4300000: Prop_BrokenCoffeetable1
     4300002: Prop_BrokenCoffeetable2
+    4300004: Prop_BrokenCoffeetable
     9500000: //RootNode
   materials:
     importMaterials: 1
@@ -24,7 +27,6 @@ ModelImporter:
     legacyGenerateAnimations: 4
     bakeSimulation: 0
     optimizeGameObjects: 0
-    motionNodeName: 
     animationCompression: 1
     animationRotationError: .5
     animationPositionError: .5

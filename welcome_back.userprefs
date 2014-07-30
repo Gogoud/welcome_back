@@ -1,10 +1,9 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace />
-  <MonoDevelop.Ide.Workbench ActiveDocument="..\Project-Alix\Assets\RasmusGUI\More\ObjectTrigger.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\RasmusGUI\Shaders\CameraFilter.cs">
     <Files>
-      <File FileName="..\Project-Alix\Assets\Project Assets\Scripts\Character\FlashLight\FlashLightObject.cs" Line="10" Column="54" />
-      <File FileName="..\Project-Alix\Assets\Project Assets\Scripts\Triggers\TriggerTypes\CollaborateTrigger.cs" Line="85" Column="53" />
-      <File FileName="..\Project-Alix\Assets\RasmusGUI\More\ObjectTrigger.cs" Line="62" Column="38" />
+      <File FileName="Assets\RasmusGUI\Shaders\CameraFilter.cs" Line="93" Column="40" />
+      <File FileName="Assets\Project Assets\Scripts\Character\Camera\Raycasting.cs" Line="216" Column="11" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

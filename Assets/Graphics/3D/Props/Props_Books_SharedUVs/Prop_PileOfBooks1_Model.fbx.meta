@@ -17,6 +17,7 @@ ModelImporter:
     legacyGenerateAnimations: 4
     bakeSimulation: 0
     optimizeGameObjects: 0
+    motionNodeName: 
     animationCompression: 1
     animationRotationError: .5
     animationPositionError: .5
@@ -36,15 +37,15 @@ ModelImporter:
     useFileUnits: 1
     optimizeMeshForGPU: 1
     weldVertices: 1
-    secondaryUVAngleDistortion: 75
-    secondaryUVAreaDistortion: 75
-    secondaryUVHardAngle: 53
-    secondaryUVPackMargin: 64
+    secondaryUVAngleDistortion: 15
+    secondaryUVAreaDistortion: 8
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 19
   tangentSpace:
     normalSmoothAngle: 180
     splitTangentsAcrossUV: 1
-    normalImportMode: 0
-    tangentImportMode: 0
+    normalImportMode: 1
+    tangentImportMode: 1
   importAnimation: 1
   copyAvatar: 0
   humanDescription:

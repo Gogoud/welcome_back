@@ -267,6 +267,19 @@ public class EventSystemEditor : Editor
 			ES.m_Events[Effected].m_OpenDoor = EditorGUILayout.FloatField(ES.m_Events[Effected].m_OpenDoor, GUILayout.Height (m_BoxHeight),GUILayout.Width (90));
 			GUILayout.EndHorizontal();
 		}
+
+		// <===============================================================================>
+
+		else if(ES.m_Events[Effected].m_ChosenEffect == m_DifferentEffects.Door_Angle)
+		{
+			EditorGUILayout.LabelField ("Opens the door to set angle", GUILayout.Height (m_TextHeight), GUILayout.Width (253));
+			
+			GUILayout.BeginHorizontal(GUILayout.Height(20));
+			GUILayout.Space(5);
+			EditorGUILayout.LabelField ("Angle", GUILayout.Height (m_TextHeight), GUILayout.Width (123));
+			ES.m_Events[Effected].m_OpenDoor = EditorGUILayout.FloatField(ES.m_Events[Effected].m_OpenDoor, GUILayout.Height (m_BoxHeight),GUILayout.Width (90));
+			GUILayout.EndHorizontal();
+		}
 		
 		// <===============================================================================>
 

@@ -31,7 +31,7 @@ public class RDoor : ObjectComponent
 			else
 			{
 				m_Active = false;
-				Camera.main.GetComponent<Raycasting>().Release();
+				//Camera.main.GetComponent<Raycasting>()
 				Camera.main.GetComponent<FirstPersonCamera>().UnLockCamera();
 				Camera.main.transform.parent.GetComponent<FirstPersonController> ().UnLockPlayerMovement();
 			}
@@ -40,7 +40,7 @@ public class RDoor : ObjectComponent
 
 	public override void Interact()
 	{
-
+		//Debug.Log ("Anropar dörr");
 		if(GetComponent<Locked>().GetLocked() == false)
 		{
 			if(Input.GetButton(m_Input))

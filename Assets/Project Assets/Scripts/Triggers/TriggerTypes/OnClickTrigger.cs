@@ -1,9 +1,9 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class OnClickTrigger : MonoBehaviour 
+public class OnClickTrigger : ObjectComponent 
 {
-	public void OnMouseDown()
+	public void Trigger()
 	{
 		if(gameObject.GetComponent<SuperTrigger>())
 		{
@@ -16,5 +16,10 @@ public class OnClickTrigger : MonoBehaviour
 				}
 			}
 		}
+	}
+
+	public override void Interact ()
+	{
+		Trigger ();
 	}
 }

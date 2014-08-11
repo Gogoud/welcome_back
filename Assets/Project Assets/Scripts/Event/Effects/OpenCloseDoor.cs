@@ -12,27 +12,40 @@ public class OpenCloseDoor :  TriggerComponent
 {
 	public void CloseDoor(Id obj)
 	{
-		float angle = obj.GetComponent<RotationLimit>().m_Rotation.y;
-
-		if(obj.gameObject.GetComponent<RotationLimit>())
-		{
-			angle = obj.gameObject.GetComponent<RotationLimit>().CheckRotation(-angle, "y");
-		}
-
-		obj.transform.Rotate (new Vector3 (0, 1, 0), angle,Space.Self);
+		obj.GetComponent<RDoor>().CloseDoor();
 	}
-
-	public void OpenDoor(Id obj, float angle)
+	public void OpenDoor(Id obj)
 	{
-		CloseDoor (obj);
-
-		if(obj.gameObject.GetComponent<RotationLimit>())
-		{
-			angle = obj.gameObject.GetComponent<RotationLimit>().CheckRotation(angle, "y");
-		}
-		
-		obj.transform.Rotate(new Vector3 (0, 1, 0),angle,Space.Self);
+		obj.GetComponent<RDoor>().OpenDoor();
 	}
+	public void AngleDoor(Id obj, float angle)
+	{
+		obj.GetComponent<RDoor>().ChangeDoorAngle(angle);
+	}
+
+	//public void CloseDoor(Id obj)
+	//{
+	//	float angle = obj.GetComponent<RotationLimit>().m_Rotation.y;
+	//
+	//	if(obj.gameObject.GetComponent<RotationLimit>())
+	//	{
+	//		angle = obj.gameObject.GetComponent<RotationLimit>().CheckRotation(-angle, "y");
+	//	}
+	//
+	//	obj.transform.Rotate (new Vector3 (0, 1, 0), angle,Space.Self);
+	//}
+	//
+	//public void OpenDoor(Id obj, float angle)
+	//{
+	//	CloseDoor (obj);
+	//
+	//	if(obj.gameObject.GetComponent<RotationLimit>())
+	//	{
+	//		angle = obj.gameObject.GetComponent<RotationLimit>().CheckRotation(angle, "y");
+	//	}
+	//	
+	//	obj.transform.Rotate(new Vector3 (0, 1, 0),angle,Space.Self);
+	//}
 	
 	override public string Name
 	{ get{return"OpenCloseDoor";}}

@@ -11,199 +11,165 @@ using System.Collections;
 
 public class Inspect : ObjectComponent
 {
-	#region PublicMemberVariables
-	public float m_Sensitivity 			  = 20.0f;
-	public float m_InspectionViewDistance = 2.0f;
-	public float m_LerpSpeed			  = 5f;	
-	public string m_Input				  = "Fire2"; 
-	#endregion
+    #region PublicMemberVariables
+    public float m_Sensitivity = 20.0f;
+    public float m_InspectionViewDistance = 2.0f;
+    public float m_LerpSpeed = 5f;
+    public string m_Input = "Fire2";
+    #endregion
 
-	#region PrivateMemberVariables
-	private Vector3 	m_OriginalPosition;
-	private Quaternion  m_OriginalRotation;
-	private int			m_DeActivateCounter  = 0;
-	private bool		m_IsOriginalPosition = true;
-	private bool		m_UnlockedCamera	 = true;
-	private bool		m_ShouldMoveBack	 = false;
-	private bool		m_IsInspecting		 = false;
-	#endregion
+    #region PrivateMemberVariables
+    private Vector3 m_OriginalPosition;
+    private Quaternion m_OriginalRotation;
+    private int m_DeActivateCounter = 0;
+    private float m_ActualViewDistance = 0;
+    private bool m_PickUp = false;
+    private bool m_IsInspecting = false;
+    private bool m_IsLerping = false;
+    #endregion
 
+    public bool IsInspecting
+    {
+        get { return m_IsInspecting; }
+        set { m_IsInspecting = value; }
+    }
 
-	void Start()
-	{
-		m_OriginalPosition = transform.position;
-		m_OriginalRotation = transform.rotation;
-		
-	}
+    void Update()
+    {
+        if (gameObject.GetComponent<PickUp>())
+        {
+            m_PickUp = gameObject.GetComponent<PickUp>().HoldingObject;
+        }
 
-	public void UnLockInspectorMode()
-	{
-		if(m_ShouldMoveBack)
-		{
-			ShouldCollide(true);
-			MoveToInspectDistance(false);
-		}
+        if (m_IsInspecting && !m_IsLerping)
+        {
+            float m_moveX = Input.GetAxis("Mouse X") * m_Sensitivity;
+            float m_moveY = Input.GetAxis("Mouse Y") * m_Sensitivity;
 
-		Camera.main.transform.gameObject.GetComponent<FirstPersonCamera>().UnLockCamera();
-		Camera.main.transform.parent.GetComponent<FirstPersonController>().UnLockPlayerMovement();
-		m_UnlockedCamera = true;
-		m_ShouldMoveBack = false;
-		m_IsOriginalPosition = true;
-		m_IsInspecting = false;
-		//Camera.main.GetComponent<Raycasting>().Release();
-	}
+            transform.RotateAround(collider.bounds.center, Vector3.left, m_moveY);
+            transform.RotateAround(collider.bounds.center, Vector3.up, m_moveX);
+        }
+    }
 
-	void Update()
-	{
-		if(!IsActive)
-		{
-			if(m_ShouldMoveBack)
-			{
-				ShouldCollide(true);
-				MoveToInspectDistance(false);
-			}
-			if(m_DeActivateCounter > 4 &&  m_UnlockedCamera == false && m_IsOriginalPosition && Quaternion.Angle(transform.rotation, m_OriginalRotation) < 0.5f)
-			{
-				Camera.main.transform.gameObject.GetComponent<FirstPersonCamera>().UnLockCamera();
-				Camera.main.transform.parent.GetComponent<FirstPersonController>().UnLockPlayerMovement();
-				m_UnlockedCamera = true;
-				m_ShouldMoveBack = false;
-				m_IsOriginalPosition = true;
-				m_IsInspecting = false;
-				if(gameObject.GetComponent<PickUp>() == null)
-				{
-					Camera.main.GetComponent<Raycasting>().Release();
-				}
+    public void StartInspecting()
+    {
+        if (!m_IsLerping)
+        {
+            m_IsInspecting = true;
 
-			}
-			m_DeActivateCounter++;
-		}
-		else
-		{
-			m_DeActivateCounter++;
-			if(m_DeActivateCounter > 5)
-			{
-				m_ShouldMoveBack = true;
-			}
-		}
-	}
+            Camera.main.transform.gameObject.GetComponent<FirstPersonCamera>().LockCamera();
+            Camera.main.transform.parent.GetComponent<FirstPersonController>().LockPlayerMovement();
 
-	//Lerps position and rotation of the object to the inspection Mode distance and back to original position/rotation
-	void MoveToInspectDistance(bool shouldInspect)
-	{
-		Vector3 cameraPosition 		 = Camera.main.transform.position;
-		Vector3 targetPosition;
-		//float   cameraObjectDistance = Vector3.Distance(cameraPosition, transform.position);
-		float	lerpSpeed			 = m_LerpSpeed;
+            m_OriginalPosition = transform.position;
+            m_OriginalRotation = transform.rotation;
 
-		if(shouldInspect)
-		{
-			Vector3 cameraForward  = Camera.main.transform.forward.normalized;
-			cameraForward *= m_InspectionViewDistance;
-			targetPosition = cameraPosition+cameraForward;
-			transform.position = Vector3.Lerp(transform.position, targetPosition, m_LerpSpeed/10.0f);
-			m_IsOriginalPosition = false;
+            if (gameObject.GetComponent<Rigidbody>() != null)
+            {
+                rigidbody.useGravity = false;
+                rigidbody.velocity = Vector3.zero;
+                rigidbody.angularVelocity = Vector3.zero;
+            }
+            Cast();
+            StartCoroutine("LerpOutObject", Camera.main.transform.position + (Camera.main.transform.forward * m_ActualViewDistance));
 
+            if (!m_PickUp)
+            {
+                Camera.main.gameObject.GetComponent<Raycasting>().m_HoldingObject = true;
+                Camera.main.gameObject.GetComponent<Raycasting>().HoldObject = gameObject;
+            }
+        }
+    }
 
-			if(gameObject.GetComponent<Rigidbody>() != null)
-			{
-				rigidbody.useGravity 		= false;
-				rigidbody.velocity   		= Vector3.zero;
-				rigidbody.angularVelocity 	= Vector3.zero;
-			}
-		}
-		else
-		{
-			if(Vector3.Distance(transform.position, m_OriginalPosition) > 0.01f  || Quaternion.Angle(transform.rotation, m_OriginalRotation) > 0.2f)
-			{
-				m_IsOriginalPosition = false;
-				transform.rotation = Quaternion.Lerp(transform.rotation, m_OriginalRotation, lerpSpeed/10.0f);
-				transform.position = Vector3.Lerp(transform.position, m_OriginalPosition, lerpSpeed/10.0f);
-			}
-			else if(Vector3.Distance(transform.position, m_OriginalPosition) < 0.03f && Quaternion.Angle(transform.rotation, m_OriginalRotation) < 0.5f)
-			{
-				m_IsOriginalPosition = true;
-				m_ShouldMoveBack 	 = false;
-				if(gameObject.GetComponent<Rigidbody>() != null)
-				{
-					rigidbody.useGravity = true;
-				}
-			}
-		}
-	}
+    public override void Interact()
+    {
+        if (!m_IsInspecting)
+            StartInspecting();
+    }
 
-	public Vector3 OriginalPosition
-	{
-		set { m_OriginalPosition = value; } 
-	}
+    public void StopInspecting()
+    {
+        if (!m_IsLerping)
+        {
+            StartCoroutine("LerpInObject");
+        }
+    }
 
+    public void Drop()
+    {
+        if (!m_IsLerping && m_PickUp)
+        {
+            if (gameObject.GetComponent<Rigidbody>() != null)
+            {
+                rigidbody.useGravity = true;
+            }
 
-	void ShouldCollide(bool yes)
-	{
-		if(GetComponent<BoxCollider>() != null)
-		{
-			foreach(BoxCollider c in GetComponents<BoxCollider>())
-			{
-				c.enabled = yes;
-			}
-			
-		}
-		else if(GetComponent<MeshCollider>() != null)
-		{
-			foreach(MeshCollider c in GetComponents<MeshCollider>())
-			{
-				c.enabled = yes;
-			}
-		}
-	}
-	
-	public override void Interact ()
-	{
-		//Check if we should inspect the object or not.
-		if(Input.GetButton(m_Input)/* && m_IsOriginalPosition*/)
-		{
-			if(!IsActive)
-			{
-				Camera.main.transform.gameObject.GetComponent<FirstPersonCamera>().LockCamera();
-				Camera.main.transform.parent.GetComponent<FirstPersonController>().LockPlayerMovement();
-				if(gameObject.GetComponent<PickUp>() != null){
-					m_OriginalPosition = transform.position;
-					m_OriginalRotation = transform.rotation;
-				}
-				m_UnlockedCamera   = false;
-				m_ShouldMoveBack = true;
-			}
-			Activate();
-			m_DeActivateCounter = 0;
-		}
+            if (!m_PickUp)
+            {
+                Camera.main.gameObject.GetComponent<Raycasting>().m_HoldingObject = false;
+                Camera.main.gameObject.GetComponent<Raycasting>().HoldObject = null;
+            }
+            Camera.main.transform.gameObject.GetComponent<FirstPersonCamera>().UnLockCamera();
+            Camera.main.transform.parent.GetComponent<FirstPersonController>().UnLockPlayerMovement();
 
-		//if we are active we rotate the object with the mouse here.
-		if(IsActive)
-		{
-			if(Input.GetButton(m_Input))
-			{
-				Camera.main.GetComponent<Raycasting>().IsPickedUp = true; 
-				MoveToInspectDistance(true);
-				
-				float m_moveX = Input.GetAxis("Mouse X") * m_Sensitivity;
-				float m_moveY = Input.GetAxis("Mouse Y") * m_Sensitivity;
-				
-				//rotates the object based on mouse input
-				transform.RotateAround(collider.bounds.center,Vector3.left, m_moveY);
-				transform.RotateAround(collider.bounds.center,Vector3.up, m_moveX);
-				m_IsInspecting = true;
-				ShouldCollide(false);
-			}
-			else 
-			{
-				m_ShouldMoveBack = true;
-				DeActivate();
-			}
-		}
-	}
-	public bool IsInspecting
-	{
-		get{ return m_IsInspecting; }
-		set{ m_IsInspecting = value;}
-	}
+            m_IsInspecting = false;
+//            gameObject.GetComponent<PickUp>().DropInspect();
+        }
+    }
+
+    public IEnumerator LerpOutObject(Vector3 outPosition)
+    {
+        m_IsLerping = true;
+        while (Vector3.Distance(transform.position, outPosition) > 0.01f)
+        {
+            transform.position = Vector3.Lerp(transform.position, outPosition, m_LerpSpeed / 10.0f);
+            yield return new WaitForSeconds(Time.deltaTime);
+        }
+        m_IsLerping = false;
+        yield return null;
+    }
+
+    public IEnumerator LerpInObject()
+    {
+        m_IsLerping = true;
+        while (Vector3.Distance(transform.position, m_OriginalPosition) > 0.01f || Quaternion.Angle(transform.rotation, m_OriginalRotation) > 0.2f)
+        {
+            transform.position = Vector3.Lerp(transform.position, m_OriginalPosition, m_LerpSpeed / 10.0f);
+            transform.rotation = Quaternion.Lerp(transform.rotation, m_OriginalRotation, m_LerpSpeed / 10.0f);
+            yield return new WaitForSeconds(Time.deltaTime);
+        }
+        m_IsLerping = false;
+
+        if (gameObject.GetComponent<Rigidbody>() != null)
+        {
+            rigidbody.useGravity = true;
+        }
+
+        if (!m_PickUp)
+        {
+            Camera.main.gameObject.GetComponent<Raycasting>().m_HoldingObject = false;
+            Camera.main.gameObject.GetComponent<Raycasting>().HoldObject = null;
+        }
+        Camera.main.transform.gameObject.GetComponent<FirstPersonCamera>().UnLockCamera();
+        Camera.main.transform.parent.GetComponent<FirstPersonController>().UnLockPlayerMovement();
+
+        m_IsInspecting = false;
+        yield return null;
+    }
+
+    void Cast()
+    {
+        RaycastHit hit;
+        Ray ray = new Ray(Camera.main.transform.transform.position, Camera.main.transform.transform.forward);
+        Debug.DrawRay(ray.origin, ray.direction * m_InspectionViewDistance, Color.magenta);
+
+        if (Physics.Raycast(ray, out hit, m_InspectionViewDistance))
+        {
+            m_ActualViewDistance = Vector3.Distance(hit.point, Camera.main.transform.position);
+            m_ActualViewDistance *= 0.88f;
+        }
+        else
+        {
+            m_ActualViewDistance = m_InspectionViewDistance;
+        }
+    }
 }

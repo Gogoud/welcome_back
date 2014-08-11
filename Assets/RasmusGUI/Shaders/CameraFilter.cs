@@ -65,7 +65,6 @@ public class CameraFilter : MonoBehaviour
 
 	public void UseEffect(GameObject effect)
 	{
-		Debug.Log ("Kommer hit");
 		m_ObjectShader 			= effect;
 		m_Texture 				= m_ObjectShader.GetComponent<ShaderData> ().m_EffectTexture;
 		m_EffectActive 			= true;

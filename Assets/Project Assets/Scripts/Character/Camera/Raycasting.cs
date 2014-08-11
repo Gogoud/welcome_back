@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
-
+using System.Collections.Generic;
+using System.Linq;
 
 /* Casts a ray from the Objects position in the forward direction of the object
 * until it hits an object with ObjectComponent's then activates Interact on that object.
@@ -12,235 +13,177 @@ using System.Collections;
 
 public class Raycasting : MonoBehaviour
 {
-	#region PublicMemberVariables
-	public float m_Distance  	 = 3;
-	public string m_Input	 	 = "Fire1";
-	public string m_InputPocket  = "Pocket";
-	public LayerMask m_LayerMask = (1<<9);
+    #region PublicMemberVariables
+    public float m_Distance = 3;
+    public bool m_HoldingObject = false;
 	public GameObject m_Manager;
-	#endregion
-	#region PrivateMemberVariables
-	private GameObject m_InteractingWith;
-	private bool m_Release = false;
-	private bool m_ShowHover = true;
-	#endregion
-	
-	// Used only for inventory swap functionallity
-	public GameObject InteractingWith{ get;set; }
-	
-	public bool ShowHover
-	{
-		set { m_ShowHover = value; }
-	}
-	
-	public bool ShowCollaborateHover { get;set; }
-	
-	public bool IsPickedUp{get;set;}
-	
-	void Start()
-	{
-		IsPickedUp = false;
-	}
-	
-	// Update is called once per frame
+    public LayerMask m_LayerMask = (1 << 2) | (1 << 9) | (1 << 10) | (1 << 11) | (1 << 12) | (1 << 13) | (1 << 14) | (1 << 15);
+    #endregion
+
+    #region PrivateMemberVariables
+    private string m_InputFire1  = "Fire1";
+    private string m_InputFire2  = "Fire3";
+    private string m_InputPocket = "Pocket";
+    private string m_InputDrop   = "Fire2";
+    private int m_FrameCount 	 = 0;
+    private GameObject m_HoldObject;
+    private bool m_FirstFrame = false;
+    private GameObject m_HitObject;
+    #endregion
+
+    public GameObject HoldObject
+    {
+        set { m_HoldObject = value; }
+        get { return m_HoldObject; }
+    }
+
+    void Start()
+    {
+
+    }
+
+    // Update is called once per frame
 	void Update ()
 	{
-		RaycastHit hit;
-		Ray ray = new Ray(transform.position, transform.forward);
-		Debug.DrawRay (ray.origin, ray.direction * m_Distance, Color.yellow);
-		
-		if(Physics.Raycast (ray, out hit, m_Distance, (1<<9)|(1<<16) ))
+		if(Input.GetButton(m_InputFire1) || Input.GetButtonDown(m_InputFire2) 
+		   || Input.GetButtonDown(m_InputPocket) || Input.GetButtonDown(m_InputDrop) 
+		   || Input.GetButtonUp(m_InputFire1))
 		{
-			if(hit.collider.gameObject.layer == (16))
+			int layer = Cast ();
+			if(layer == 2)
 			{
 				return;
 			}
-		}	
-
-		//if(Input.GetButtonDown(m_InputPocket) && m_InteractingWith != null)// !Input.GetButtonDown("Inspect"))
-		//{
-		//	//Alternativ smaller input om focus med Raycast inte funkar..(ngt som säger att du siktar på ett object alt. inte tar upp ett object med inven är i fokus)
-		//
-		//	m_Manager.GetComponent<Manager>().AddInventoryItem(m_InteractingWith);
-		//	m_Manager.GetComponent<Manager>().SetInventoryFocusOnSelect();
-		//	m_InteractingWith.SetActive(false);
-		//	m_Release = true;
-		//}
-
-		// used for mouse cursor state
-		Cast (m_ShowHover);
-		
-		ClickToInteract();
-		
-		if(m_Release)
-		{
-			m_InteractingWith = null;
-			m_Release = false;
-		}
-	}
-	
-	public bool HoldingInteractingWith()
-	{
-		if(m_InteractingWith == null)
-		{
-			return false;
-		}
-		else
-		{
-			return true;
-		}
-	}
-	
-	//Starts Interact with object when mouse button is clicked once over object and releases the object when button is pressed again
-	void ClickToInteract()
-	{
-		if(Input.GetButtonDown(m_Input) && m_InteractingWith == null)
-		{
-			Cast ();
-		}
-		else if(Input.GetButtonDown(m_Input) && m_InteractingWith != null)
-		{
-			RaycastHit hit;
-			Ray ray = new Ray(transform.position, transform.forward);
-			Debug.DrawRay (ray.origin, ray.direction * m_Distance, Color.green);
-			
-			if(Physics.Raycast (ray, out hit, m_Distance, m_LayerMask.value))
+			if(!m_HoldingObject)
 			{
-				ObjectComponent hoover = hit.collider.gameObject.GetComponent<ObjectComponent>();
-				
-				if(m_InteractingWith.GetComponent<PickUp>() != null && m_InteractingWith.GetComponent<CollaborateTrigger>() != null && hoover != null)
+				if(Input.GetButtonDown(m_InputFire1))
 				{
-					ObjectComponent[] objectArray;
-					objectArray = m_InteractingWith.GetComponents<ObjectComponent>();
-					foreach(ObjectComponent c in objectArray)
+					if(layer == 15)
 					{
-						c.Interact();
+						if(m_HitObject.GetComponent<Book>())
+							m_HitObject.GetComponent<Book>().Interact();
+
+						if(m_HitObject.GetComponent<DairyPage>())
+							m_HitObject.GetComponent<DairyPage>().Interact();
+
+						if(m_HitObject.GetComponent<CodeLock>())
+							m_HitObject.GetComponent<CodeLock>().Interact();
+
+						if(m_HitObject.GetComponent<SafeCode>())
+							m_HitObject.GetComponent<SafeCode>().Interact();
+					}
+					if(layer == 10)
+					{
+						m_HitObject.GetComponent<OnClickTrigger>().Trigger();
+					}
+					if(layer == 12)
+					{
+						m_HitObject.GetComponent<RDoor>().Interact();
+						m_HoldingObject = true;
+						m_HoldObject = m_HitObject;
+						//m_HitObject.GetComponent<DoorDrag>().Interact();
+					}
+					if(layer == 13 || layer == 14)
+					{
+						m_HitObject.GetComponent<PickUp>().Interact();
 					}
 				}
-				if((m_InteractingWith.GetComponent<PickUp>() == null || m_InteractingWith.GetComponent<CollaborateTrigger>() == null) && hoover != null)
+				if((layer == 11 || layer == 14) && Input.GetButtonDown(m_InputFire2))
 				{
-					Release();
+					m_HitObject.GetComponent<Inspect>().Interact();
 				}
 			}
-			else
+			else if(m_HoldingObject)
 			{
-				Release();
-			}
-		}
-		else if(m_InteractingWith != null)
-		{
-			if(Vector3.Distance(m_InteractingWith.transform.position,transform.position) > m_Distance)
-			{
-				Release();
-			}
-			else
-			{
-				ObjectComponent[] objectArray;
-				objectArray = m_InteractingWith.GetComponents<ObjectComponent>();
-				foreach(ObjectComponent c in objectArray)
+				if(layer == 12)
 				{
-					c.Interact();
+					m_HoldObject.GetComponent<RDoor>().Interact();
+					//m_HitObject.GetComponent<DoorDrag>().Interact();
 				}
+				if(layer == 12 && Input.GetButtonUp(m_InputFire1))
+				{
+					m_HoldingObject = false;
+					m_HoldObject = null;
+				}
+				//if(layer == 12 && Input.GetButton(m_InputFire1))
+				//{
+				//	int missLayer = Cast ();
+				//	if(missLayer == 0)
+				//	{
+				//		m_HoldObject.GetComponent<DoorDrag>().StopDrag();
+				//	}
+				//}
+				if(Input.GetButtonDown(m_InputFire2))
+				{
+					HoldingInspect();
+				}
+				else if(Input.GetButtonDown(m_InputDrop))
+				{
+					DropItems();
+				}
+				else if(Input.GetButtonDown(m_InputPocket) && (m_HoldObject.layer == 13 || m_HoldObject.layer == 14))
+				{
+					m_Manager.GetComponent<Manager>().AddInventoryItem(m_HoldObject);
+					m_Manager.GetComponent<Manager>().SetInventoryFocusOnSelect();
+					m_HoldObject.SetActive(false);
+					m_HoldingObject = false;
+					m_HoldObject = null;
+				}
+				//else if(Input.GetButtonUp(m_InputFire1))
+				//{
+				//	if(m_HoldObject.GetComponent<DoorDrag>())
+				//	{
+				//		m_HoldObject.GetComponent<DoorDrag>().StopDrag();
+				//	}
+				//}
 			}
 		}
 	}
-	
-	// Invokes the Interact function on objects with ObjectComponents
-	void Cast()
+
+	public int Cast()
 	{
 		RaycastHit hit;
 		Ray ray = new Ray(transform.position, transform.forward);
-		Debug.DrawRay (ray.origin, ray.direction * m_Distance, Color.yellow);
-		
-		if (Physics.Raycast (ray, out hit, m_Distance, m_LayerMask.value))
+		Debug.DrawRay(ray.origin,ray.direction * m_Distance, Color.blue);
+		if(Physics.Raycast(ray, out hit, m_Distance, m_LayerMask))
 		{
-			m_InteractingWith = hit.collider.gameObject;
-			
-			InteractingWith = hit.collider.gameObject;
-			
-			ObjectComponent[] objectArray;
-			objectArray = m_InteractingWith.GetComponents<ObjectComponent>();
-			
-			foreach(ObjectComponent c in objectArray)
+			m_HitObject = hit.collider.gameObject;
+			return hit.collider.gameObject.layer;
+		}
+		return 0;
+	}
+
+	public void HoldingInspect()
+	{
+		if(m_HoldObject.gameObject.GetComponent<Inspect>())
+		{
+			if(m_HoldObject.gameObject.GetComponent<PickUp>())
 			{
-				c.Interact();
+				if(m_HoldObject.gameObject.GetComponent<PickUp>().HoldingObject && !m_HoldObject.gameObject.GetComponent<Inspect>().IsInspecting)
+				{			
+					m_HoldObject.gameObject.GetComponent<Inspect>().Interact();
+				}
+				else if(m_HoldObject.gameObject.GetComponent<Inspect>().IsInspecting)
+				{
+					m_HoldObject.gameObject.GetComponent<Inspect>().StopInspecting();
+				}
+			}
+			else if(m_HoldObject.gameObject.GetComponent<Inspect>().IsInspecting)
+			{
+				m_HoldObject.gameObject.GetComponent<Inspect>().StopInspecting();
 			}
 		}
-		else
-		{
-			InteractingWith = null;
-		}
 	}
-	
-	void Cast(bool showHover)
+
+	public void DropItems()
 	{
-		if(showHover)
+		if(m_HoldObject.gameObject.GetComponent<Inspect>() && m_HoldObject.GetComponent<PickUp>())
 		{
-			//RaycastHit hit;
-			//Ray ray = new Ray(transform.position, transform.forward);
-			//Debug.DrawRay (ray.origin, ray.direction * m_Distance, Color.yellow);
-			//
-			//if (Physics.Raycast (ray, out hit, m_Distance, m_LayerMask.value))
-			//{
-			//	CollaborateHoverEffect collaborateHover = hit.collider.gameObject.GetComponent<CollaborateHoverEffect>();
-			//	HoverEffect hover	= hit.collider.gameObject.GetComponent<HoverEffect>();
-			//	
-			//	// collaborate hover effect check
-			//	if(collaborateHover != null && ShowCollaborateHover)
-			//	{
-			//		Cursor.SetCursor(collaborateHover.HoverTexture, collaborateHover.Description, true);
-			//	}
-			//	else if(IsPickedUp && collaborateHover == null)
-			//	{
-			//		Cursor.SetCursor(null, null, true);
-			//	}
-			//	// regular hover effect check
-			//	else if(hover != null)
-			//	{
-			//		if(Input.GetButton(m_Input))
-			//		{
-			//			if(hover.ButtonDownHoverTexture != null)
-			//			{
-			//				Cursor.SetCursor(hover.ButtonDownHoverTexture, hover.Description, true);
-			//			}
-			//			else
-			//			{
-			//				Cursor.SetCursor(hover.HoverTexture, hover.Description, true);
-			//			}
-			//		}
-			//		else
-			//		{
-			//			Cursor.SetCursor(hover.HoverTexture, hover.Description, true);
-			//		}
-			//	}
-			//	else
-			//	{
-			//		Cursor.SetCursor(null, null, true);
-			//	}
-			//}
-			//else
-			//{
-			//	Cursor.SetCursor(null, null, true);
-			//}
+			m_HoldObject.gameObject.GetComponent<Inspect>().Drop();
 		}
-		else
+		else if(m_HoldObject.GetComponent<PickUp>())
 		{
-			//Cursor.SetCursor(null, null, false);
+			m_HoldObject.GetComponent<PickUp>().Drop();
 		}
-	}
-	
-	//Releases the grip of the object we are interacting with right now.
-	public void Release()
-	{
-		m_Release = true;
-		
-		ShowCollaborateHover = false;
-		IsPickedUp = false;
-	}
-	
-	public void Activate(GameObject go)
-	{
-		m_InteractingWith = go;
-		InteractingWith = go;
 	}
 }

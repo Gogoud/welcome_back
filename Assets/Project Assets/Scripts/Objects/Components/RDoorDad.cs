@@ -11,6 +11,7 @@ public class RDoorDad : ObjectComponent
 	private float m_LastRotation = 0;
 	private float m_Difference 	 = 0;
 	private float m_StartAngle;
+	private float m_MaxMovement = 5;
 
 	// Use this for initialization
 	void Start () 
@@ -31,9 +32,13 @@ public class RDoorDad : ObjectComponent
 		{
 			movement = Input.GetAxis("xBoxVertical") * m_XBoxSensitivity;
 		}
-		if(Mathf.Abs(movement) > 50)
+		if(movement > m_MaxMovement)
 		{
-			movement = 50;
+			movement = m_MaxMovement;
+		}
+		if(movement < -m_MaxMovement)
+		{
+			movement = -m_MaxMovement;
 		}
 		if(m_Difference < m_PositiveRotation && m_Difference > -m_NegativeeRotation)
 		{
@@ -58,9 +63,13 @@ public class RDoorDad : ObjectComponent
 		{
 			movement = Input.GetAxis("xBoxVertical") * -m_XBoxSensitivity;
 		}
-		if(Mathf.Abs(movement) > 50)
+		if(movement > m_MaxMovement)
 		{
-			movement = 50;
+			movement = m_MaxMovement;
+		}
+		if(movement < -m_MaxMovement)
+		{
+			movement = -m_MaxMovement;
 		}
 
 		if(m_Difference < m_PositiveRotation && m_Difference > -m_NegativeeRotation)

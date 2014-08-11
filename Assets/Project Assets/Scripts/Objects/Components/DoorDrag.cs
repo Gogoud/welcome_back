@@ -13,64 +13,30 @@ public class DoorDrag : ObjectComponent
 {
 	#region PrivateMemberVariables
 	private float				m_DeActivateCounter		= 5;
-	private bool				m_UnlockedCamera		= true;
 	private float 				m_MouseYPosition;
-	private Transform   		m_Camera;
 	private GameObject			m_Player;
 	private float 				m_Delta;
 	private Vector3 			m_RotationAxis;
 	private Vector3 			m_ObjectGeneralForward;
+	private bool   				m_IsDraging;
 	#endregion
-	
+
 	#region PublicMemberVariables
 	public float		m_Speed				= 60.0f;
 	public string 		m_VerticalInput;
 	public string 		m_Input;
 	#endregion
-	
+
 	void Start () 
 	{
-		m_Camera = Camera.main.transform;
 		m_Player = Camera.main.transform.parent.gameObject;
-
 	}
-	
+
 	void Update () 
 	{	
-		if(!IsActive)
+		if(m_IsDraging)
 		{
-
 			m_ObjectGeneralForward = ClosestDirection(transform.forward);
-			//m_ObjectGeneralRight	 = ClosestDirection(transform.right);
-
-			if(m_UnlockedCamera == false)
-			{
-				m_Camera.gameObject.GetComponent<FirstPersonCamera>().UnLockCamera();
-				m_UnlockedCamera = true;
-			}
-
-			m_DeActivateCounter++;
-			if(m_DeActivateCounter > 10)
-			{
-				DeActivate();
-			}
-		}
-		else
-		{
-			if(Camera.main.GetComponent<Raycasting>().m_Distance < Vector3.Distance(Camera.main.transform.position, transform.position))
-			{
-				Camera.main.GetComponent<Raycasting>().Release();
-				m_Camera.gameObject.GetComponent<FirstPersonCamera>().UnLockCamera();
-			}
-		}
-		
-	}
-
-
-	public override void Interact()
-	{
-		if(IsActive)
-		{
 			m_RotationAxis = PlayerForward();
 			m_MouseYPosition = Input.GetAxis("Mouse Y");
 
@@ -81,32 +47,42 @@ public class DoorDrag : ObjectComponent
 					m_Delta = gameObject.GetComponent<RotationLimit>().CheckRotation(m_Delta, "y");
 				}
 
-				transform.Rotate(m_RotationAxis,m_Delta,Space.Self);
-
+				transform.Rotate(m_RotationAxis,m_Delta,Space.Self);				
 			}
 		}
+	}
 
-		if(Input.GetButton(m_Input))
+	public override void Interact ()
+	{
+		if(!m_IsDraging)
 		{
-			m_Camera.gameObject.GetComponent<FirstPersonCamera>().LockCamera();
-			m_UnlockedCamera = false;
-			Activate();
-			m_DeActivateCounter = 0;
+			StartDrag();
 		}
-		else
-		{
-			Camera.main.GetComponent<Raycasting>().Release();
-			DeActivate();
-		}
+	}
+
+	public void StartDrag()
+	{
+		m_IsDraging = true;
+		Camera.main.transform.gameObject.GetComponent<FirstPersonCamera>().LockCamera();
+		Camera.main.gameObject.GetComponent<Raycasting> ().m_HoldingObject = true;
+		Camera.main.gameObject.GetComponent<Raycasting> ().HoldObject = gameObject;
+	}
+
+	public void StopDrag()
+	{
+		m_IsDraging = false;
+		Camera.main.transform.gameObject.GetComponent<FirstPersonCamera>().UnLockCamera();
+		Camera.main.gameObject.GetComponent<Raycasting> ().m_HoldingObject = false;
+		Camera.main.gameObject.GetComponent<Raycasting> ().HoldObject = null;
 	}
 
 	//Calculates the general direction of a vector v
 	Vector3 ClosestDirection(Vector3 v) 
 	{
-		Vector3[] compass = { new Vector3(-1,0,1), Vector3.forward, new Vector3(1,0,1), new Vector3(-1,0,-1), Vector3.back, new Vector3(1,0,-1), Vector3.left, Vector3.right };
+		Vector3[] compass = { new Vector3(-1,0,1), Vector3.forward, new Vector3(1,0,1), new Vector3(-1,0,-1), Vector3.back, new Vector3(1,0,-1), Vector3.left, Vector3.right};
 		float maxDot = -Mathf.Infinity;
 		Vector3 ret = Vector3.zero;
-		
+
 		foreach(Vector3 dir in compass) 
 		{
 			float t = Vector3.Dot(v, dir);
@@ -133,38 +109,8 @@ public class DoorDrag : ObjectComponent
 			m_Delta = ((m_MouseYPosition)*m_Speed)*Time.deltaTime;
 		}
 
-		//Vector3 ret = new Vector3();
-		//if(forward == Vector3.forward)
-		//{
-		//	ret = new Vector3(0, -1 , 0);
-		//	m_Delta = ((m_MouseYPosition ) * m_Speed)*Time.deltaTime;
-		//}
-		//else if(forward == Vector3.back)
-		//{
-		//	ret = new Vector3(0, 1 , 0);
-		//	m_Delta = ((m_MouseYPosition ) * m_Speed)*Time.deltaTime;
-		//}
-		//else if(forward == Vector3.left)
-		//{
-		//	ret = new Vector3(0, 1 , 0);
-		//	m_Delta = ((-m_MouseYPosition ) * m_Speed)*Time.deltaTime;
-		//}
-		//else if(forward == Vector3.right)
-		//{
-		//	ret = new Vector3(0, -1 , 0);
-		//	m_Delta = ((m_MouseYPosition ) * m_Speed)*Time.deltaTime;
-		//}
-
-
-
 		return new Vector3(0,1,0);
 	}
-
-	public void ReleaseDoor()
-	{
-		Camera.main.SendMessage("Release");
-	}
-
 	public override string Name
 	{
 		get

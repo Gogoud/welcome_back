@@ -12,6 +12,7 @@ public enum m_DifferentEffects
 	Delay,
 	Door_Close,
 	Door_Open,
+	Door_Angle,
 	Drawer_Close,
 	Drawer_Open,
 	Kill,
@@ -138,7 +139,14 @@ public class EventSystem : MonoBehaviour
 			
 			else if(m_Events[i].m_ChosenEffect == m_DifferentEffects.Door_Open)
 			{
-				gameObject.GetComponent<OpenCloseDoor>().OpenDoor(m_Objects[i],m_Events[i].m_OpenDoor);
+				gameObject.GetComponent<OpenCloseDoor>().OpenDoor(m_Objects[i]);
+			}
+
+			// <===============================================================================>
+			
+			else if(m_Events[i].m_ChosenEffect == m_DifferentEffects.Door_Angle)
+			{
+				gameObject.GetComponent<OpenCloseDoor>().AngleDoor(m_Objects[i], m_Events[i].m_OpenDoor);
 			}
 		
 			// <===============================================================================>

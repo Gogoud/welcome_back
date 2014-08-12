@@ -55,10 +55,12 @@ ModelImporter:
     2300002: Prop_WorkbenchVise
     2300004: Prop_WorkbenchViseBase
     2300006: Prop_WorkbenchViseSpiner
+    2300008: //RootNode
     3300000: Prop_Workbench
     3300002: Prop_WorkbenchVise
     3300004: Prop_WorkbenchViseBase
     3300006: Prop_WorkbenchViseSpiner
+    3300008: //RootNode
     4300000: Prop_WorkbenchVise
     4300002: Prop_WorkbenchViseSpiner
     4300004: Prop_WorkbenchViseBase

@@ -9,11 +9,19 @@ Shader "Hidden/Blend" {
 	#include "UnityCG.cginc"
 	
 	struct v2f {
+<<<<<<< HEAD
 		float4 pos : POSITION;
 		float2 uv[2] : TEXCOORD0;
 	};
 	struct v2f_mt {
 		float4 pos : POSITION;
+=======
+		float4 pos : SV_POSITION;
+		float2 uv[2] : TEXCOORD0;
+	};
+	struct v2f_mt {
+		float4 pos : SV_POSITION;
+>>>>>>> b1e7e130151e489b1b5d34254c1b528e0ffd4407
 		float2 uv[4] : TEXCOORD0;
 	};
 			
@@ -48,11 +56,16 @@ Shader "Hidden/Blend" {
 		return o;
 	}
 	
+<<<<<<< HEAD
 	half4 fragScreen (v2f i) : COLOR {
+=======
+	half4 fragScreen (v2f i) : SV_Target {
+>>>>>>> b1e7e130151e489b1b5d34254c1b528e0ffd4407
 		half4 toBlend = saturate (tex2D(_MainTex, i.uv[0]) * _Intensity);
 		return 1-(1-toBlend)*(1-tex2D(_ColorBuffer, i.uv[1]));
 	}
 
+<<<<<<< HEAD
 	half4 fragAdd (v2f i) : COLOR {
 		return tex2D(_MainTex, i.uv[0].xy) * _Intensity + tex2D(_ColorBuffer, i.uv[1]);
 	}
@@ -62,6 +75,17 @@ Shader "Hidden/Blend" {
 	}
 	
 	half4 fragMultiTap (v2f_mt i) : COLOR {
+=======
+	half4 fragAdd (v2f i) : SV_Target {
+		return tex2D(_MainTex, i.uv[0].xy) * _Intensity + tex2D(_ColorBuffer, i.uv[1]);
+	}
+
+	half4 fragVignetteBlend (v2f i) : SV_Target {
+		return tex2D(_MainTex, i.uv[0].xy) * tex2D(_ColorBuffer, i.uv[0]);
+	}
+	
+	half4 fragMultiTap (v2f_mt i) : SV_Target {
+>>>>>>> b1e7e130151e489b1b5d34254c1b528e0ffd4407
 		half4 outColor = tex2D(_MainTex, i.uv[0].xy);
 		outColor += tex2D(_MainTex, i.uv[1].xy);
 		outColor += tex2D(_MainTex, i.uv[2].xy);

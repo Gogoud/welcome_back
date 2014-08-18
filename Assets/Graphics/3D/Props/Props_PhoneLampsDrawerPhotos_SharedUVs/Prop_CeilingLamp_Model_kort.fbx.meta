@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
 guid: 40d9346edf3b5474d9c0430774114702
+=======
+guid: f65cd3e4c87357447a5608dcf7badaae
+>>>>>>> b1e7e130151e489b1b5d34254c1b528e0ffd4407
 ModelImporter:
   serializedVersion: 16
   fileIDToRecycleName:
@@ -46,7 +50,11 @@ ModelImporter:
     isReadable: 1
   meshes:
     lODScreenPercentages: []
+<<<<<<< HEAD
     globalScale: .00999999978
+=======
+    globalScale: 10
+>>>>>>> b1e7e130151e489b1b5d34254c1b528e0ffd4407
     meshCompression: 0
     addColliders: 0
     importBlendShapes: 1
@@ -60,9 +68,15 @@ ModelImporter:
     secondaryUVHardAngle: 88
     secondaryUVPackMargin: 4
   tangentSpace:
+<<<<<<< HEAD
     normalSmoothAngle: 180
     splitTangentsAcrossUV: 1
     normalImportMode: 1
+=======
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+>>>>>>> b1e7e130151e489b1b5d34254c1b528e0ffd4407
     tangentImportMode: 1
   importAnimation: 1
   copyAvatar: 0

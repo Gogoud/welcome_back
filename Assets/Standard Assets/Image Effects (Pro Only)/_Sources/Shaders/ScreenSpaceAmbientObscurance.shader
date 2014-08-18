@@ -44,7 +44,11 @@ Shader "Hidden/ScreenSpaceAmbientObscurance"
 	float4 _ProjInfo;
 	float4x4 _ProjectionInv; // ref only
 
+<<<<<<< HEAD
 	sampler2D _CameraDepthTexture;
+=======
+	sampler2D_float _CameraDepthTexture;
+>>>>>>> b1e7e130151e489b1b5d34254c1b528e0ffd4407
 	sampler2D _Rand;
 	sampler2D _AOTex;
 	sampler2D _MainTex;
@@ -66,7 +70,11 @@ Shader "Hidden/ScreenSpaceAmbientObscurance"
 
 	struct v2f 
 	{
+<<<<<<< HEAD
 		float4 pos : POSITION;
+=======
+		float4 pos : SV_POSITION;
+>>>>>>> b1e7e130151e489b1b5d34254c1b528e0ffd4407
 		float2 uv : TEXCOORD0;
 		float2 uv2 : TEXCOORD1;
 	};
@@ -146,7 +154,11 @@ Shader "Hidden/ScreenSpaceAmbientObscurance"
 	float3 GetPosition(float2 ssP) {
 		float3 P;
 
+<<<<<<< HEAD
 		P.z = UNITY_SAMPLE_DEPTH(tex2D(_CameraDepthTexture, ssP.xy));
+=======
+		P.z = SAMPLE_DEPTH_TEXTURE(_CameraDepthTexture, ssP.xy);
+>>>>>>> b1e7e130151e489b1b5d34254c1b528e0ffd4407
 
 		// Offset to pixel center
 		P = ReconstructCSPosition(float2(ssP) /*+ float2(0.5, 0.5)*/, P.z);
@@ -159,7 +171,11 @@ Shader "Hidden/ScreenSpaceAmbientObscurance"
 		float2 ssP = saturate(float2(ssR*unitOffset) + ssC);
 
 		float3 P;
+<<<<<<< HEAD
 		P.z = UNITY_SAMPLE_DEPTH(tex2D(_CameraDepthTexture, ssP.xy));
+=======
+		P.z = SAMPLE_DEPTH_TEXTURE(_CameraDepthTexture, ssP.xy);
+>>>>>>> b1e7e130151e489b1b5d34254c1b528e0ffd4407
 
 		// Offset to pixel center
 		P = ReconstructCSPosition(float2(ssP)/* + float2(0.5, 0.5)*/, P.z);
@@ -190,7 +206,11 @@ Shader "Hidden/ScreenSpaceAmbientObscurance"
 	    return f * f * f * max((vn - bias) / (epsilon + vv), 0.0);
 	}
 
+<<<<<<< HEAD
 	float4 fragAO(v2f i) : COLOR
+=======
+	float4 fragAO(v2f i) : SV_Target
+>>>>>>> b1e7e130151e489b1b5d34254c1b528e0ffd4407
 	{
 		float4 fragment = fixed4(1,1,1,1);
 
@@ -242,7 +262,11 @@ Shader "Hidden/ScreenSpaceAmbientObscurance"
 		return fragment;
 	}
 
+<<<<<<< HEAD
 	float4 fragUpsample (v2f i) : COLOR
+=======
+	float4 fragUpsample (v2f i) : SV_Target
+>>>>>>> b1e7e130151e489b1b5d34254c1b528e0ffd4407
 	{
 		float4 fragment = fixed4(1,1,1,1);
 
@@ -255,13 +279,21 @@ Shader "Hidden/ScreenSpaceAmbientObscurance"
 		return fragment;
 	}
 
+<<<<<<< HEAD
 	float4 fragApply (v2f i) : COLOR
+=======
+	float4 fragApply (v2f i) : SV_Target
+>>>>>>> b1e7e130151e489b1b5d34254c1b528e0ffd4407
 	{
 		float4 ao = tex2D(_AOTex, i.uv2.xy);
 		return tex2D(_MainTex, i.uv.xy) * ao.rrrr;
 	}
 
+<<<<<<< HEAD
 	float4 fragApplySoft (v2f i) : COLOR
+=======
+	float4 fragApplySoft (v2f i) : SV_Target
+>>>>>>> b1e7e130151e489b1b5d34254c1b528e0ffd4407
 	{
 		float4 color = tex2D(_MainTex, i.uv.xy);
 
@@ -274,7 +306,11 @@ Shader "Hidden/ScreenSpaceAmbientObscurance"
 		return color * float4(ao,ao,ao,5)/5;
 	}
 
+<<<<<<< HEAD
 	float4 fragBlurBL (v2f i) : COLOR
+=======
+	float4 fragBlurBL (v2f i) : SV_Target
+>>>>>>> b1e7e130151e489b1b5d34254c1b528e0ffd4407
 	{
 		float4 fragment = float4(1,1,1,1);
 

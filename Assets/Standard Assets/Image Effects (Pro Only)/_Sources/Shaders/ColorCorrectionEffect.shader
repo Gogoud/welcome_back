@@ -18,7 +18,11 @@ CGPROGRAM
 uniform sampler2D _MainTex;
 uniform sampler2D _RampTex;
 
+<<<<<<< HEAD
 fixed4 frag (v2f_img i) : COLOR
+=======
+fixed4 frag (v2f_img i) : SV_Target
+>>>>>>> b1e7e130151e489b1b5d34254c1b528e0ffd4407
 {
 	fixed4 orig = tex2D(_MainTex, i.uv);
 	

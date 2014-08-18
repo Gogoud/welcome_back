@@ -11,7 +11,11 @@ Shader "Hidden/BrightPassFilterForBloom"
 	
 	struct v2f 
 	{
+<<<<<<< HEAD
 		float4 pos : POSITION;
+=======
+		float4 pos : SV_POSITION;
+>>>>>>> b1e7e130151e489b1b5d34254c1b528e0ffd4407
 		float2 uv : TEXCOORD0;
 	};
 	
@@ -28,7 +32,11 @@ Shader "Hidden/BrightPassFilterForBloom"
 		return o;
 	} 
 	
+<<<<<<< HEAD
 	half4 frag(v2f i) : COLOR 
+=======
+	half4 frag(v2f i) : SV_Target 
+>>>>>>> b1e7e130151e489b1b5d34254c1b528e0ffd4407
 	{
 		half4 color = tex2D(_MainTex, i.uv);
 		//color = color * saturate((color-threshhold.x) * 75.0); // didn't go well with HDR and din't make sense

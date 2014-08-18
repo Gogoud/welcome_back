@@ -91,7 +91,11 @@ Shader "Hidden/NoiseAndGrainDX11" {
 			return o; 
 		}		
 
+<<<<<<< HEAD
 		float4 fragDX11 ( v2f i ) : COLOR
+=======
+		float4 fragDX11 ( v2f i ) : SV_Target
+>>>>>>> b1e7e130151e489b1b5d34254c1b528e0ffd4407
 		{	
 			float4 color = saturate(tex2D (_MainTex, i.uv_screen.xy));
 			
@@ -107,7 +111,11 @@ Shader "Hidden/NoiseAndGrainDX11" {
 			return float4(Overlay(m, color.rgb), color.a);
 		}
 
+<<<<<<< HEAD
 		float4 fragDX11Monochrome ( v2f i ) : COLOR
+=======
+		float4 fragDX11Monochrome ( v2f i ) : SV_Target
+>>>>>>> b1e7e130151e489b1b5d34254c1b528e0ffd4407
 		{	
 			float4 color = saturate(tex2D (_MainTex, i.uv_screen.xy));
 			
@@ -123,7 +131,11 @@ Shader "Hidden/NoiseAndGrainDX11" {
 			return float4(Overlay(m, color.rgb), color.a);
 		} 
 
+<<<<<<< HEAD
 		float4 fragDX11Tmp ( v2f i ) : COLOR
+=======
+		float4 fragDX11Tmp ( v2f i ) : SV_Target
+>>>>>>> b1e7e130151e489b1b5d34254c1b528e0ffd4407
 		{	
 			float4 color = saturate(tex2D (_MainTex, i.uv_screen.xy));
 			
@@ -139,7 +151,11 @@ Shader "Hidden/NoiseAndGrainDX11" {
 			return float4(m.rgb, color.a);
 		}
 
+<<<<<<< HEAD
 		float4 fragDX11MonochromeTmp ( v2f i ) : COLOR
+=======
+		float4 fragDX11MonochromeTmp ( v2f i ) : SV_Target
+>>>>>>> b1e7e130151e489b1b5d34254c1b528e0ffd4407
 		{	
 			float4 color = saturate(tex2D (_MainTex, i.uv_screen.xy));
 			
@@ -155,7 +171,11 @@ Shader "Hidden/NoiseAndGrainDX11" {
 			return float4(m.rgb, color.a);
 		}	
 
+<<<<<<< HEAD
 		float4 fragOverlayBlend	( v2f i ) : COLOR
+=======
+		float4 fragOverlayBlend	( v2f i ) : SV_Target
+>>>>>>> b1e7e130151e489b1b5d34254c1b528e0ffd4407
 		{	
 			float4 color = saturate(tex2D (_MainTex, i.uv_screen.xy));
 			float4 m = saturate(tex2D (_NoiseTex, i.uv_screen.xy));

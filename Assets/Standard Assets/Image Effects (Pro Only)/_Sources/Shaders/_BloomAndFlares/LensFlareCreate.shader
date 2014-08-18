@@ -8,7 +8,11 @@ Shader "Hidden/LensFlareCreate" {
 	#include "UnityCG.cginc"
 	
 	struct v2f {
+<<<<<<< HEAD
 		float4 pos : POSITION;
+=======
+		float4 pos : SV_POSITION;
+>>>>>>> b1e7e130151e489b1b5d34254c1b528e0ffd4407
 		float2 uv[4] : TEXCOORD0;
 	};
 		
@@ -30,7 +34,11 @@ Shader "Hidden/LensFlareCreate" {
 		return o;
 	}
 	
+<<<<<<< HEAD
 	fixed4 frag(v2f i) : COLOR {
+=======
+	fixed4 frag(v2f i) : SV_Target {
+>>>>>>> b1e7e130151e489b1b5d34254c1b528e0ffd4407
 		fixed4 color = float4 (0,0,0,0);
 		color += tex2D(_MainTex, i.uv[0] ) * colorA;
 		color += tex2D(_MainTex, i.uv[1] ) * colorB;

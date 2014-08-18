@@ -10,7 +10,11 @@ Shader "Hidden/SunShaftsComposite" {
 	#include "UnityCG.cginc"
 	
 	struct v2f {
+<<<<<<< HEAD
 		float4 pos : POSITION;
+=======
+		float4 pos : SV_POSITION;
+>>>>>>> b1e7e130151e489b1b5d34254c1b528e0ffd4407
 		float2 uv : TEXCOORD0;
 		#if UNITY_UV_STARTS_AT_TOP
 		float2 uv1 : TEXCOORD1;
@@ -18,7 +22,11 @@ Shader "Hidden/SunShaftsComposite" {
 	};
 		
 	struct v2f_radial {
+<<<<<<< HEAD
 		float4 pos : POSITION;
+=======
+		float4 pos : SV_POSITION;
+>>>>>>> b1e7e130151e489b1b5d34254c1b528e0ffd4407
 		float2 uv : TEXCOORD0;
 		float2 blurVector : TEXCOORD1;
 	};
@@ -26,7 +34,11 @@ Shader "Hidden/SunShaftsComposite" {
 	sampler2D _MainTex;
 	sampler2D _ColorBuffer;
 	sampler2D _Skybox;
+<<<<<<< HEAD
 	sampler2D _CameraDepthTexture;
+=======
+	sampler2D_float _CameraDepthTexture;
+>>>>>>> b1e7e130151e489b1b5d34254c1b528e0ffd4407
 	
 	uniform half _NoSkyBoxMask;
 		
@@ -52,7 +64,11 @@ Shader "Hidden/SunShaftsComposite" {
 		return o;
 	}
 		
+<<<<<<< HEAD
 	half4 fragScreen(v2f i) : COLOR { 
+=======
+	half4 fragScreen(v2f i) : SV_Target { 
+>>>>>>> b1e7e130151e489b1b5d34254c1b528e0ffd4407
 		half4 colorA = tex2D (_MainTex, i.uv.xy);
 		#if UNITY_UV_STARTS_AT_TOP
 		half4 colorB = tex2D (_ColorBuffer, i.uv1.xy);
@@ -63,7 +79,11 @@ Shader "Hidden/SunShaftsComposite" {
 		return 1.0f - (1.0f-colorA) * (1.0f-depthMask);	
 	}
 
+<<<<<<< HEAD
 	half4 fragAdd(v2f i) : COLOR { 
+=======
+	half4 fragAdd(v2f i) : SV_Target { 
+>>>>>>> b1e7e130151e489b1b5d34254c1b528e0ffd4407
 		half4 colorA = tex2D (_MainTex, i.uv.xy);
 		#if UNITY_UV_STARTS_AT_TOP
 		half4 colorB = tex2D (_ColorBuffer, i.uv1.xy);
@@ -84,7 +104,11 @@ Shader "Hidden/SunShaftsComposite" {
 		return o; 
 	}
 	
+<<<<<<< HEAD
 	half4 frag_radial(v2f_radial i) : COLOR 
+=======
+	half4 frag_radial(v2f_radial i) : SV_Target 
+>>>>>>> b1e7e130151e489b1b5d34254c1b528e0ffd4407
 	{	
 		half4 color = half4(0,0,0,0);
 		for(int j = 0; j < SAMPLES_INT; j++)   
@@ -100,11 +124,19 @@ Shader "Hidden/SunShaftsComposite" {
 		return max (skyboxValue.a, _NoSkyBoxMask * dot (skyboxValue.rgb, float3 (0.59,0.3,0.11))); 		
 	}
 	
+<<<<<<< HEAD
 	half4 frag_depth (v2f i) : COLOR {
 		#if UNITY_UV_STARTS_AT_TOP
 		float depthSample = UNITY_SAMPLE_DEPTH(tex2D (_CameraDepthTexture, i.uv1.xy));
 		#else
 		float depthSample = UNITY_SAMPLE_DEPTH(tex2D (_CameraDepthTexture, i.uv.xy));		
+=======
+	half4 frag_depth (v2f i) : SV_Target {
+		#if UNITY_UV_STARTS_AT_TOP
+		float depthSample = SAMPLE_DEPTH_TEXTURE(_CameraDepthTexture, i.uv1.xy);
+		#else
+		float depthSample = SAMPLE_DEPTH_TEXTURE(_CameraDepthTexture, i.uv.xy);		
+>>>>>>> b1e7e130151e489b1b5d34254c1b528e0ffd4407
 		#endif
 		
 		half4 tex = tex2D (_MainTex, i.uv.xy);
@@ -128,7 +160,11 @@ Shader "Hidden/SunShaftsComposite" {
 		return outColor;
 	}
 	
+<<<<<<< HEAD
 	half4 frag_nodepth (v2f i) : COLOR {
+=======
+	half4 frag_nodepth (v2f i) : SV_Target {
+>>>>>>> b1e7e130151e489b1b5d34254c1b528e0ffd4407
 		#if UNITY_UV_STARTS_AT_TOP
 		float4 sky = (tex2D (_Skybox, i.uv1.xy));
 		#else

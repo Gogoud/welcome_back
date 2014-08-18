@@ -28,11 +28,15 @@ ModelImporter:
   meshes:
     lODScreenPercentages: []
     globalScale: 1
+<<<<<<< HEAD
     meshCompression: 3
+=======
+    meshCompression: 0
+>>>>>>> b1e7e130151e489b1b5d34254c1b528e0ffd4407
     addColliders: 0
     importBlendShapes: 1
     swapUVChannels: 0
-    generateSecondaryUV: 0
+    generateSecondaryUV: 1
     useFileUnits: 1
     optimizeMeshForGPU: 1
     weldVertices: 1

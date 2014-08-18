@@ -16,7 +16,11 @@ Shader "Hidden/SeparableWeightedBlurDof34" {
 	sampler2D _TapHigh;
 		
 	struct v2f {
+<<<<<<< HEAD
 		half4 pos : POSITION;
+=======
+		half4 pos : SV_POSITION;
+>>>>>>> b1e7e130151e489b1b5d34254c1b528e0ffd4407
 		half2 uv : TEXCOORD0;
 		half4 uv01 : TEXCOORD1;
 		half4 uv23 : TEXCOORD2;
@@ -24,7 +28,11 @@ Shader "Hidden/SeparableWeightedBlurDof34" {
 	};
 	
 	struct v2fSingle {
+<<<<<<< HEAD
 		half4 pos : POSITION;
+=======
+		half4 pos : SV_POSITION;
+>>>>>>> b1e7e130151e489b1b5d34254c1b528e0ffd4407
 		half2 uv : TEXCOORD0;
 	};
 	
@@ -56,7 +64,11 @@ Shader "Hidden/SeparableWeightedBlurDof34" {
 		
 	// mostly used for foreground, so more gaussian-like
 			
+<<<<<<< HEAD
 	half4 fragBlurUnweighted (v2f i) : COLOR {
+=======
+	half4 fragBlurUnweighted (v2f i) : SV_Target {
+>>>>>>> b1e7e130151e489b1b5d34254c1b528e0ffd4407
 		half4 blurredColor = half4 (0,0,0,0);
 
 		half4 sampleA = tex2D(_MainTex, i.uv.xy);
@@ -80,7 +92,11 @@ Shader "Hidden/SeparableWeightedBlurDof34" {
 
 	// used for background, so more bone curve-like
 		
+<<<<<<< HEAD
 	half4 fragBlurWeighted (v2f i) : COLOR {
+=======
+	half4 fragBlurWeighted (v2f i) : SV_Target {
+>>>>>>> b1e7e130151e489b1b5d34254c1b528e0ffd4407
 		half4 blurredColor = half4 (0,0,0,0);
 
 		half4 sampleA = tex2D(_MainTex, i.uv.xy);
@@ -111,7 +127,11 @@ Shader "Hidden/SeparableWeightedBlurDof34" {
 		return color;
 	}
 	
+<<<<<<< HEAD
 	half4 fragBlurDark (v2f i) : COLOR {
+=======
+	half4 fragBlurDark (v2f i) : SV_Target {
+>>>>>>> b1e7e130151e489b1b5d34254c1b528e0ffd4407
 		half4 blurredColor = half4 (0,0,0,0);
 
 		half4 sampleA = tex2D(_MainTex, i.uv.xy);
@@ -144,7 +164,11 @@ Shader "Hidden/SeparableWeightedBlurDof34" {
 		
 	// not used atm
 	
+<<<<<<< HEAD
 	half4 fragBlurUnweightedDark (v2f i) : COLOR {
+=======
+	half4 fragBlurUnweightedDark (v2f i) : SV_Target {
+>>>>>>> b1e7e130151e489b1b5d34254c1b528e0ffd4407
 		half4 blurredColor = half4 (0,0,0,0);
 
 		half4 sampleA = tex2D(_MainTex, i.uv.xy);
@@ -173,7 +197,11 @@ Shader "Hidden/SeparableWeightedBlurDof34" {
 	sampler2D _TapMedium;
 	sampler2D _TapLow;
 	
+<<<<<<< HEAD
 	half4 fragMixMediumAndLowTap (v2fSingle i) : COLOR 
+=======
+	half4 fragMixMediumAndLowTap (v2fSingle i) : SV_Target 
+>>>>>>> b1e7e130151e489b1b5d34254c1b528e0ffd4407
 	{
 	 	half4 tapMedium = tex2D (_TapMedium, i.uv.xy);
 		half4 tapLow = tex2D (_TapLow, i.uv.xy);

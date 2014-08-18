@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
 guid: b5198eddda7dcfd44b88c29da7e0f7c1
+=======
+guid: 88ead7906cabc7d4fb3af93560a69871
+>>>>>>> b1e7e130151e489b1b5d34254c1b528e0ffd4407
 ModelImporter:
   serializedVersion: 16
   fileIDToRecycleName:
@@ -17,6 +21,10 @@ ModelImporter:
     legacyGenerateAnimations: 4
     bakeSimulation: 0
     optimizeGameObjects: 0
+<<<<<<< HEAD
+=======
+    motionNodeName: 
+>>>>>>> b1e7e130151e489b1b5d34254c1b528e0ffd4407
     animationCompression: 1
     animationRotationError: .5
     animationPositionError: .5
@@ -27,12 +35,20 @@ ModelImporter:
     isReadable: 1
   meshes:
     lODScreenPercentages: []
+<<<<<<< HEAD
     globalScale: .00999999978
+=======
+    globalScale: 1
+>>>>>>> b1e7e130151e489b1b5d34254c1b528e0ffd4407
     meshCompression: 0
     addColliders: 0
     importBlendShapes: 1
     swapUVChannels: 0
+<<<<<<< HEAD
     generateSecondaryUV: 0
+=======
+    generateSecondaryUV: 1
+>>>>>>> b1e7e130151e489b1b5d34254c1b528e0ffd4407
     useFileUnits: 1
     optimizeMeshForGPU: 1
     weldVertices: 1

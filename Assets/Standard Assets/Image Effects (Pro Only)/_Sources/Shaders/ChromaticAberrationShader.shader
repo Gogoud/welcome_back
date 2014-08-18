@@ -8,7 +8,11 @@ Shader "Hidden/ChromaticAberration" {
 	#include "UnityCG.cginc"
 	
 	struct v2f {
+<<<<<<< HEAD
 		float4 pos : POSITION;
+=======
+		float4 pos : SV_POSITION;
+>>>>>>> b1e7e130151e489b1b5d34254c1b528e0ffd4407
 		float2 uv : TEXCOORD0;
 	};
 	
@@ -29,7 +33,11 @@ Shader "Hidden/ChromaticAberration" {
 		return o;
 	} 
 	
+<<<<<<< HEAD
 	half4 fragDs(v2f i) : COLOR 
+=======
+	half4 fragDs(v2f i) : SV_Target 
+>>>>>>> b1e7e130151e489b1b5d34254c1b528e0ffd4407
 	{
 		half4 c = tex2D (_MainTex, i.uv.xy + _MainTex_TexelSize.xy * 0.5);
 		c += tex2D (_MainTex, i.uv.xy - _MainTex_TexelSize.xy * 0.5);
@@ -38,7 +46,11 @@ Shader "Hidden/ChromaticAberration" {
 		return c/4.0;
 	}
 
+<<<<<<< HEAD
 	half4 frag(v2f i) : COLOR 
+=======
+	half4 frag(v2f i) : SV_Target 
+>>>>>>> b1e7e130151e489b1b5d34254c1b528e0ffd4407
 	{
 		half2 coords = i.uv;
 		half2 uv = i.uv;
@@ -73,7 +85,11 @@ Shader "Hidden/ChromaticAberration" {
 		half2(-0.32194,-0.932615),
 	};
 
+<<<<<<< HEAD
 	half4 fragComplex(v2f i) : COLOR 
+=======
+	half4 fragComplex(v2f i) : SV_Target 
+>>>>>>> b1e7e130151e489b1b5d34254c1b528e0ffd4407
 	{
 		half2 coords = i.uv;
 		half2 uv = i.uv;

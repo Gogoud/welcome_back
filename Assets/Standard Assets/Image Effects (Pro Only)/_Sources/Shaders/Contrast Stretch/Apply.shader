@@ -21,7 +21,11 @@ CGPROGRAM
 #include "UnityCG.cginc"
 
 struct v2f {
+<<<<<<< HEAD
 	float4 pos		: POSITION;
+=======
+	float4 pos		: SV_POSITION;
+>>>>>>> b1e7e130151e489b1b5d34254c1b528e0ffd4407
 	float2 uv[2]	: TEXCOORD0;
 }; 
 
@@ -37,7 +41,11 @@ v2f vert (appdata_img v)
 	return o;
 }
 
+<<<<<<< HEAD
 float4 frag (v2f i) : COLOR
+=======
+float4 frag (v2f i) : SV_Target
+>>>>>>> b1e7e130151e489b1b5d34254c1b528e0ffd4407
 {
 	float4 col = tex2D(_MainTex, i.uv[0]);
 	float4 adapted = tex2D(_AdaptTex, i.uv[1]);

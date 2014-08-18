@@ -11,7 +11,11 @@ Shader "Hidden/BrightPassFilter2"
 	
 	struct v2f 
 	{
+<<<<<<< HEAD
 		float4 pos : POSITION;
+=======
+		float4 pos : SV_POSITION;
+>>>>>>> b1e7e130151e489b1b5d34254c1b528e0ffd4407
 		float2 uv : TEXCOORD0;
 	};
 	
@@ -27,7 +31,11 @@ Shader "Hidden/BrightPassFilter2"
 		return o;
 	} 
 	
+<<<<<<< HEAD
 	half4 fragScalarThresh(v2f i) : COLOR 
+=======
+	half4 fragScalarThresh(v2f i) : SV_Target 
+>>>>>>> b1e7e130151e489b1b5d34254c1b528e0ffd4407
 	{
 		half4 color = tex2D(_MainTex, i.uv);
 		color.rgb = color.rgb;
@@ -35,7 +43,11 @@ Shader "Hidden/BrightPassFilter2"
 		return color;
 	}
 
+<<<<<<< HEAD
 	half4 fragColorThresh(v2f i) : COLOR 
+=======
+	half4 fragColorThresh(v2f i) : SV_Target 
+>>>>>>> b1e7e130151e489b1b5d34254c1b528e0ffd4407
 	{
 		half4 color = tex2D(_MainTex, i.uv);
 		color.rgb = max(half3(0,0,0), color.rgb-_Threshhold.rgb);

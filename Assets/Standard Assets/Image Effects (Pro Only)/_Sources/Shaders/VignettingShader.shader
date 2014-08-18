@@ -9,7 +9,11 @@ Shader "Hidden/Vignetting" {
 	#include "UnityCG.cginc"
 	
 	struct v2f {
+<<<<<<< HEAD
 		float4 pos : POSITION;
+=======
+		float4 pos : SV_POSITION;
+>>>>>>> b1e7e130151e489b1b5d34254c1b528e0ffd4407
 		float2 uv : TEXCOORD0;
 		float2 uv2 : TEXCOORD1;
 	};
@@ -36,7 +40,11 @@ Shader "Hidden/Vignetting" {
 		return o;
 	} 
 	
+<<<<<<< HEAD
 	half4 frag(v2f i) : COLOR {
+=======
+	half4 frag(v2f i) : SV_Target {
+>>>>>>> b1e7e130151e489b1b5d34254c1b528e0ffd4407
 		half2 coords = i.uv;
 		half2 uv = i.uv;
 		

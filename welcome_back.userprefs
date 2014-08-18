@@ -1,6 +1,19 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+<<<<<<< HEAD
   <MonoDevelop.Ide.Workbench />
+=======
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Project Assets\Scripts\Objects\Components\Inspect.cs">
+    <Files>
+      <File FileName="Assets\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\CameraMotionBlurDX11.shader" Line="1" Column="1" />
+      <File FileName="Assets\Project Assets\Scripts\Objects\Components\Inspect.cs" Line="175" Column="2" />
+      <File FileName="Assets\Project Assets\Scripts\Event\Effects\MovieSample.cs" Line="1" Column="1" />
+      <File FileName="Assets\Project Assets\Editor\EventSystemEditor.cs" Line="1" Column="1" />
+      <File FileName="Assets\Project Assets\Scripts\Objects\Components\Pushable.cs" Line="1" Column="1" />
+      <File FileName="Assets\RasmusGUI\RayCast2\RasmusRaycast.cs" Line="1" Column="1" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+>>>>>>> b1e7e130151e489b1b5d34254c1b528e0ffd4407
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>

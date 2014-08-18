@@ -16,7 +16,11 @@ uniform float _OffsetScale;
 uniform float _BlurRadius;
 
 struct v2f {
+<<<<<<< HEAD
 	float4 pos : POSITION;
+=======
+	float4 pos : SV_POSITION;
+>>>>>>> b1e7e130151e489b1b5d34254c1b528e0ffd4407
 	float2 uv[8] : TEXCOORD0;
 };
 
@@ -42,7 +46,11 @@ struct v2f {
 		return o;
 	}
 
+<<<<<<< HEAD
 	half4 frag (v2f i) : COLOR
+=======
+	half4 frag (v2f i) : SV_Target
+>>>>>>> b1e7e130151e489b1b5d34254c1b528e0ffd4407
 	{	
 		// get luminance values
 		//  maybe: experiment with different luminance calculations
@@ -77,7 +85,11 @@ struct v2f {
 		return returnColor * 0.2;
 	}
 	
+<<<<<<< HEAD
 	half4 fragDebug (v2f i) : COLOR
+=======
+	half4 fragDebug (v2f i) : SV_Target
+>>>>>>> b1e7e130151e489b1b5d34254c1b528e0ffd4407
 	{	
 		// get luminance values
 		//  maybe: experiment with different luminance calculations

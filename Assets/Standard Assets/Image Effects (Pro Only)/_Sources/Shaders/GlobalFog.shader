@@ -8,7 +8,11 @@ CGINCLUDE
 	#include "UnityCG.cginc"
 
 	uniform sampler2D _MainTex;
+<<<<<<< HEAD
 	uniform sampler2D _CameraDepthTexture;
+=======
+	uniform sampler2D_float _CameraDepthTexture;
+>>>>>>> b1e7e130151e489b1b5d34254c1b528e0ffd4407
 	
 	uniform float _GlobalDensity;
 	uniform float4 _FogColor;
@@ -22,7 +26,11 @@ CGINCLUDE
 	uniform float4 _CameraWS;
 	 
 	struct v2f {
+<<<<<<< HEAD
 		float4 pos : POSITION;
+=======
+		float4 pos : SV_POSITION;
+>>>>>>> b1e7e130151e489b1b5d34254c1b528e0ffd4407
 		float2 uv : TEXCOORD0;
 		float2 uv_depth : TEXCOORD1;
 		float4 interpolatedRay : TEXCOORD2;
@@ -56,24 +64,42 @@ CGINCLUDE
 		return  (1-exp(-_GlobalDensity*fogInt)) * exp (-fogVert);
 	}
 	
+<<<<<<< HEAD
 	half4 fragAbsoluteYAndDistance (v2f i) : COLOR
 	{
 		float dpth = Linear01Depth(UNITY_SAMPLE_DEPTH(tex2D(_CameraDepthTexture,i.uv_depth)));
+=======
+	half4 fragAbsoluteYAndDistance (v2f i) : SV_Target
+	{
+		float dpth = Linear01Depth(SAMPLE_DEPTH_TEXTURE(_CameraDepthTexture,i.uv_depth));
+>>>>>>> b1e7e130151e489b1b5d34254c1b528e0ffd4407
 		float4 wsDir = dpth * i.interpolatedRay;
 		float4 wsPos = _CameraWS + wsDir;
 		return lerp(tex2D(_MainTex, i.uv), _FogColor, ComputeFogForYAndDistance(wsDir.xyz,wsPos.xyz));
 	}
 
+<<<<<<< HEAD
 	half4 fragRelativeYAndDistance (v2f i) : COLOR
 	{
 		float dpth = Linear01Depth(UNITY_SAMPLE_DEPTH(tex2D(_CameraDepthTexture,i.uv_depth)));
+=======
+	half4 fragRelativeYAndDistance (v2f i) : SV_Target
+	{
+		float dpth = Linear01Depth(SAMPLE_DEPTH_TEXTURE(_CameraDepthTexture,i.uv_depth));
+>>>>>>> b1e7e130151e489b1b5d34254c1b528e0ffd4407
 		float4 wsDir = dpth * i.interpolatedRay;
 		return lerp(tex2D(_MainTex, i.uv), _FogColor, ComputeFogForYAndDistance(wsDir.xyz, wsDir.xyz));
 	}
 
+<<<<<<< HEAD
 	half4 fragAbsoluteY (v2f i) : COLOR
 	{
 		float dpth = Linear01Depth(UNITY_SAMPLE_DEPTH(tex2D(_CameraDepthTexture,i.uv_depth)));
+=======
+	half4 fragAbsoluteY (v2f i) : SV_Target
+	{
+		float dpth = Linear01Depth(SAMPLE_DEPTH_TEXTURE(_CameraDepthTexture,i.uv_depth));
+>>>>>>> b1e7e130151e489b1b5d34254c1b528e0ffd4407
 		float4 wsPos = (_CameraWS + dpth * i.interpolatedRay);
 		float fogVert = max(0.0, (wsPos.y-_Y.x) * _Y.y);
 		fogVert *= fogVert; 
@@ -81,9 +107,15 @@ CGINCLUDE
 		return lerp(tex2D( _MainTex, i.uv ), _FogColor, fogVert);				
 	}
 
+<<<<<<< HEAD
 	half4 fragDistance (v2f i) : COLOR
 	{
 		float dpth = Linear01Depth(UNITY_SAMPLE_DEPTH(tex2D(_CameraDepthTexture,i.uv_depth)));		
+=======
+	half4 fragDistance (v2f i) : SV_Target
+	{
+		float dpth = Linear01Depth(SAMPLE_DEPTH_TEXTURE(_CameraDepthTexture,i.uv_depth));		
+>>>>>>> b1e7e130151e489b1b5d34254c1b528e0ffd4407
 		float4 camDir = ( /*_CameraWS  + */ dpth * i.interpolatedRay);
 		float fogInt = saturate(length( camDir ) * _StartDistance.x - 1.0) * _StartDistance.y;	
 		return lerp(_FogColor, tex2D(_MainTex, i.uv), exp(-_GlobalDensity*fogInt));				

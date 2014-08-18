@@ -80,7 +80,15 @@ Shader "Hidden/FXAA III (Console)" {
 			float4 rcpSize;
 			rcpSize.xy = -_MainTex_TexelSize.xy * 0.5f;
 			rcpSize.zw = _MainTex_TexelSize.xy * 0.5f;			
+<<<<<<< HEAD
 			
+=======
+#if defined (SHADER_API_PSP2)
+			//cg compiler linker bug workaround
+			float almostzero = v.texcoord.x*0.000001f;
+			rcpSize.x += almostzero;
+#endif
+>>>>>>> b1e7e130151e489b1b5d34254c1b528e0ffd4407
 			o.interpolatorA = extents;
 			o.interpolatorB = rcpSize;
 			o.interpolatorC = rcpSize;
@@ -158,7 +166,11 @@ Shader "Hidden/FXAA III (Console)" {
 				return rgbyB;
 		}
 
+<<<<<<< HEAD
 		half4 frag (v2f i) : COLOR
+=======
+		half4 frag (v2f i) : SV_Target
+>>>>>>> b1e7e130151e489b1b5d34254c1b528e0ffd4407
 		{
 			half3 color = FxaaPixelShader(i.uv, i.interpolatorA, i.interpolatorB, i.interpolatorC);
 			return half4(color, 1.0);

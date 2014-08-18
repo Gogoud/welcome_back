@@ -20,7 +20,11 @@ uniform sampler2D _MainTex;
 uniform float4 _MainTex_TexelSize;
  
 struct v2f {
+<<<<<<< HEAD
 	float4 pos : POSITION;
+=======
+	float4 pos : SV_POSITION;
+>>>>>>> b1e7e130151e489b1b5d34254c1b528e0ffd4407
 };
 
 v2f vert( appdata_img v )
@@ -30,7 +34,11 @@ v2f vert( appdata_img v )
 	return o;
 }
 
+<<<<<<< HEAD
 half4 frag (v2f i) : COLOR
+=======
+half4 frag (v2f i) : SV_Target
+>>>>>>> b1e7e130151e489b1b5d34254c1b528e0ffd4407
 {
 	return half4(0,0,0,0);
 }

@@ -10,7 +10,11 @@ Shader "Hidden/Tonemapper" {
 	#include "UnityCG.cginc"
 	 
 	struct v2f {
+<<<<<<< HEAD
 		float4 pos : POSITION;
+=======
+		float4 pos : SV_POSITION;
+>>>>>>> b1e7e130151e489b1b5d34254c1b528e0ffd4407
 		float2 uv : TEXCOORD0;
 	};
 	
@@ -33,7 +37,11 @@ Shader "Hidden/Tonemapper" {
 		return o;
 	} 
 
+<<<<<<< HEAD
 	float4 fragLog(v2f i) : COLOR 
+=======
+	float4 fragLog(v2f i) : SV_Target 
+>>>>>>> b1e7e130151e489b1b5d34254c1b528e0ffd4407
 	{
 		const float DELTA = 0.0001f;
  
@@ -48,7 +56,11 @@ Shader "Hidden/Tonemapper" {
 		return float4(avg, avg, avg, avg);
 	}
 
+<<<<<<< HEAD
 	float4 fragExp(v2f i) : COLOR 
+=======
+	float4 fragExp(v2f i) : SV_Target 
+>>>>>>> b1e7e130151e489b1b5d34254c1b528e0ffd4407
 	{
 		float2 lum = float2(0.0f, 0.0f);
 		
@@ -119,7 +131,11 @@ Shader "Hidden/Tonemapper" {
 	// NOTE/OPTIMIZATION: we're not going the extra CIE detour anymore, but
 	// scale with the OUT/IN luminance ratio,this is sooooo much faster 
 	
+<<<<<<< HEAD
 	float4 fragAdaptive(v2f i) : COLOR 
+=======
+	float4 fragAdaptive(v2f i) : SV_Target 
+>>>>>>> b1e7e130151e489b1b5d34254c1b528e0ffd4407
 	{
 		float avgLum = tex2D(_SmallTex, i.uv).x;
 		float4 color = tex2D (_MainTex, i.uv);
@@ -138,7 +154,11 @@ Shader "Hidden/Tonemapper" {
 		return color;
 	}
 	
+<<<<<<< HEAD
 	float4 fragAdaptiveAutoWhite(v2f i) : COLOR 
+=======
+	float4 fragAdaptiveAutoWhite(v2f i) : SV_Target 
+>>>>>>> b1e7e130151e489b1b5d34254c1b528e0ffd4407
 	{			
 		float2 avgLum = tex2D(_SmallTex, i.uv).xy;
 		float4 color = tex2D(_MainTex, i.uv);
@@ -157,7 +177,11 @@ Shader "Hidden/Tonemapper" {
 		return color;
 	}
 	
+<<<<<<< HEAD
 	float4 fragCurve(v2f i) : COLOR 
+=======
+	float4 fragCurve(v2f i) : SV_Target 
+>>>>>>> b1e7e130151e489b1b5d34254c1b528e0ffd4407
 	{
 		float4 color = tex2D(_MainTex, i.uv);
 		float3 cie = ToCIE(color.rgb);
@@ -170,7 +194,11 @@ Shader "Hidden/Tonemapper" {
 		return color;		
 	}	
 	
+<<<<<<< HEAD
 	float4 fragHable(v2f i) : COLOR
+=======
+	float4 fragHable(v2f i) : SV_Target
+>>>>>>> b1e7e130151e489b1b5d34254c1b528e0ffd4407
 	{
 		const float A = 0.15;
 		const float B = 0.50;
@@ -197,7 +225,11 @@ Shader "Hidden/Tonemapper" {
 	}
 
 	// we are doing it on luminance here (better color preservation, but some other problems like very fast saturation)
+<<<<<<< HEAD
 	float4 fragSimpleReinhard(v2f i) : COLOR
+=======
+	float4 fragSimpleReinhard(v2f i) : SV_Target
+>>>>>>> b1e7e130151e489b1b5d34254c1b528e0ffd4407
 	{
 		float4 texColor = tex2D(_MainTex, i.uv);
 		float lum = Luminance(texColor.rgb); 
@@ -206,7 +238,11 @@ Shader "Hidden/Tonemapper" {
 		return float4(texColor.rgb * scale / lum, texColor.a);
 	}
 	
+<<<<<<< HEAD
 	float4 fragOptimizedHejiDawson(v2f i) : COLOR 
+=======
+	float4 fragOptimizedHejiDawson(v2f i) : SV_Target 
+>>>>>>> b1e7e130151e489b1b5d34254c1b528e0ffd4407
 	{
 		float4 texColor = tex2D(_MainTex, i.uv );
 		texColor *= _ExposureAdjustment;
@@ -215,13 +251,21 @@ Shader "Hidden/Tonemapper" {
 		return retColor*retColor;
 	}		
 
+<<<<<<< HEAD
 	float4 fragPhotographic(v2f i) : COLOR
+=======
+	float4 fragPhotographic(v2f i) : SV_Target
+>>>>>>> b1e7e130151e489b1b5d34254c1b528e0ffd4407
 	{
 		float4 texColor = tex2D(_MainTex, i.uv);
 		return 1-exp2(-_ExposureAdjustment * texColor);
 	}
 	
+<<<<<<< HEAD
 	float4 fragDownsample(v2f i) : COLOR
+=======
+	float4 fragDownsample(v2f i) : SV_Target
+>>>>>>> b1e7e130151e489b1b5d34254c1b528e0ffd4407
 	{
 		float4 tapA = tex2D(_MainTex, i.uv + _MainTex_TexelSize * 0.5);
 		float4 tapB = tex2D(_MainTex, i.uv - _MainTex_TexelSize * 0.5);

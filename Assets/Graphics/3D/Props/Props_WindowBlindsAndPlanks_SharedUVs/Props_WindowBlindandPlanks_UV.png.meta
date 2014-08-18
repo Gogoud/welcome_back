@@ -20,8 +20,13 @@ TextureImporter:
   grayScaleToAlpha: 0
   generateCubemap: 0
   seamlessCubemap: 0
+<<<<<<< HEAD
   textureFormat: -3
   maxTextureSize: 4096
+=======
+  textureFormat: -1
+  maxTextureSize: 2048
+>>>>>>> b1e7e130151e489b1b5d34254c1b528e0ffd4407
   textureSettings:
     filterMode: 2
     aniso: 9

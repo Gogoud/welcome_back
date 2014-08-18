@@ -20,7 +20,11 @@ CGPROGRAM
 
 uniform sampler2D _MainTex;
 
+<<<<<<< HEAD
 float4 frag (v2f_img i) : COLOR
+=======
+float4 frag (v2f_img i) : SV_Target
+>>>>>>> b1e7e130151e489b1b5d34254c1b528e0ffd4407
 {
 	float4 col = tex2D(_MainTex, i.uv);
 	col.rgb = Luminance(col.rgb) * (1+col.a*2);

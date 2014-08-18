@@ -9,7 +9,11 @@ CGINCLUDE
 #include "UnityCG.cginc"
 
 struct v2f {
+<<<<<<< HEAD
 	float4 pos : POSITION;
+=======
+	float4 pos : SV_POSITION;
+>>>>>>> b1e7e130151e489b1b5d34254c1b528e0ffd4407
 	float4 uv[4] : TEXCOORD0;
 };
 
@@ -56,7 +60,11 @@ CGPROGRAM
 sampler2D _MainTex;
 fixed4 _Color;
 
+<<<<<<< HEAD
 fixed4 frag( v2f i ) : COLOR
+=======
+fixed4 frag( v2f i ) : SV_Target
+>>>>>>> b1e7e130151e489b1b5d34254c1b528e0ffd4407
 {
 	fixed4 c;
 	c  = tex2D( _MainTex, i.uv[0].xy );

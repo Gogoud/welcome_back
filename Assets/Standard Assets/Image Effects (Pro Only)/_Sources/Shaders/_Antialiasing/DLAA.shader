@@ -19,11 +19,7 @@ CGINCLUDE
 	uniform float4 _MainTex_TexelSize;
 
 	struct v2f {
-<<<<<<< HEAD
-		float4 pos : POSITION;
-=======
 		float4 pos : SV_POSITION;
->>>>>>> b1e7e130151e489b1b5d34254c1b528e0ffd4407
 		float2 uv : TEXCOORD0;
 	};
 	
@@ -290,17 +286,6 @@ CGINCLUDE
 		return o;
 	}
 
-<<<<<<< HEAD
-	half4 fragFirst (v2f i) : COLOR {		 	 	    
-		return highPassPre (i.uv);
-	}
-	
-	half4 fragSecond (v2f i) : COLOR {		 	 	    
-	    return edgeDetectAndBlur( i.uv );
-	}
-
-	half4 fragThird (v2f i) : COLOR {		 	 	    
-=======
 	half4 fragFirst (v2f i) : SV_Target {		 	 	    
 		return highPassPre (i.uv);
 	}
@@ -310,7 +295,6 @@ CGINCLUDE
 	}
 
 	half4 fragThird (v2f i) : SV_Target {		 	 	    
->>>>>>> b1e7e130151e489b1b5d34254c1b528e0ffd4407
 	    return edgeDetectAndBlurSharper( i.uv );
 	}
 			

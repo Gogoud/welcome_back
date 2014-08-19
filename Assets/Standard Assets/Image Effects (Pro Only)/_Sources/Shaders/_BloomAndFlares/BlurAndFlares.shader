@@ -9,29 +9,17 @@ Shader "Hidden/BlurAndFlares" {
 	#include "UnityCG.cginc"
 	
 	struct v2f {
-<<<<<<< HEAD
-		half4 pos : POSITION;
-=======
 		half4 pos : SV_POSITION;
->>>>>>> b1e7e130151e489b1b5d34254c1b528e0ffd4407
 		half2 uv : TEXCOORD0;
 	};
 
 	struct v2f_opts {
-<<<<<<< HEAD
-		half4 pos : POSITION;
-=======
 		half4 pos : SV_POSITION;
->>>>>>> b1e7e130151e489b1b5d34254c1b528e0ffd4407
 		half2 uv[7] : TEXCOORD0;
 	};
 
 	struct v2f_blur {
-<<<<<<< HEAD
-		half4 pos : POSITION;
-=======
 		half4 pos : SV_POSITION;
->>>>>>> b1e7e130151e489b1b5d34254c1b528e0ffd4407
 		half2 uv : TEXCOORD0;
 		half4 uv01 : TEXCOORD1;
 		half4 uv23 : TEXCOORD2;
@@ -97,20 +85,12 @@ Shader "Hidden/BlurAndFlares" {
 		return o;
 	}	
 
-<<<<<<< HEAD
-	half4 fragPostNoBlur (v2f i) : COLOR {
-=======
 	half4 fragPostNoBlur (v2f i) : SV_Target {
->>>>>>> b1e7e130151e489b1b5d34254c1b528e0ffd4407
 		half4 color = tex2D (_MainTex, i.uv);
 		return color * 1.0/(1.0 + Luminance(color.rgb) + 0.5); // this also makes it a little noisy
 	}
 
-<<<<<<< HEAD
-	half4 fragGaussBlur (v2f_blur i) : COLOR {
-=======
 	half4 fragGaussBlur (v2f_blur i) : SV_Target {
->>>>>>> b1e7e130151e489b1b5d34254c1b528e0ffd4407
 		half4 color = half4 (0,0,0,0);
 		color += 0.225 * tex2D (_MainTex, i.uv);
 		color += 0.150 * tex2D (_MainTex, i.uv01.xy);
@@ -124,11 +104,7 @@ Shader "Hidden/BlurAndFlares" {
 		return color;
 	} 
 
-<<<<<<< HEAD
-	half4 fragPreAndCut (v2f_opts i) : COLOR {
-=======
 	half4 fragPreAndCut (v2f_opts i) : SV_Target {
->>>>>>> b1e7e130151e489b1b5d34254c1b528e0ffd4407
 		half4 color = tex2D (_MainTex, i.uv[0]);
 		color += tex2D (_MainTex, i.uv[1]);
 		color += tex2D (_MainTex, i.uv[2]);
@@ -142,11 +118,7 @@ Shader "Hidden/BlurAndFlares" {
 		return color;
 	}
 
-<<<<<<< HEAD
-	half4 fragStretch (v2f_opts i) : COLOR {
-=======
 	half4 fragStretch (v2f_opts i) : SV_Target {
->>>>>>> b1e7e130151e489b1b5d34254c1b528e0ffd4407
 		half4 color = tex2D (_MainTex, i.uv[0]);
 		color = max (color, tex2D (_MainTex, i.uv[1]));
 		color = max (color, tex2D (_MainTex, i.uv[2]));
@@ -157,11 +129,7 @@ Shader "Hidden/BlurAndFlares" {
 		return color;
 	}	
 	
-<<<<<<< HEAD
-	half4 fragPost (v2f_opts i) : COLOR {
-=======
 	half4 fragPost (v2f_opts i) : SV_Target {
->>>>>>> b1e7e130151e489b1b5d34254c1b528e0ffd4407
 		half4 color = tex2D (_MainTex, i.uv[0]);
 		color += tex2D (_MainTex, i.uv[1]);
 		color += tex2D (_MainTex, i.uv[2]);

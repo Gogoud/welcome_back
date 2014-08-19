@@ -21,14 +21,10 @@ TextureImporter:
   generateCubemap: 0
   seamlessCubemap: 0
   textureFormat: -1
-  maxTextureSize: 2048
+  maxTextureSize: 1024
   textureSettings:
-<<<<<<< HEAD
     filterMode: -1
-=======
-    filterMode: 2
->>>>>>> b1e7e130151e489b1b5d34254c1b528e0ffd4407
-    aniso: 9
+    aniso: -1
     mipBias: -1
     wrapMode: -1
   nPOTScale: 1

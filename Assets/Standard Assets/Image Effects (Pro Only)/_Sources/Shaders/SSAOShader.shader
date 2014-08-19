@@ -12,11 +12,7 @@ CGINCLUDE
 #include "UnityCG.cginc"
 #pragma exclude_renderers gles
 struct v2f_ao {
-<<<<<<< HEAD
-	float4 pos : POSITION;
-=======
 	float4 pos : SV_POSITION;
->>>>>>> b1e7e130151e489b1b5d34254c1b528e0ffd4407
 	float2 uv : TEXCOORD0;
 	float2 uvr : TEXCOORD1;
 };
@@ -37,7 +33,6 @@ sampler2D _CameraDepthNormalsTexture;
 sampler2D _RandomTexture;
 float4 _Params; // x=radius, y=minz, z=attenuation power, w=SSAO power
 
-<<<<<<< HEAD
 #ifdef UNITY_COMPILER_HLSL
 
 #	define INPUT_SAMPLE_COUNT 8
@@ -51,26 +46,6 @@ float4 _Params; // x=radius, y=minz, z=attenuation power, w=SSAO power
 
 #	define INPUT_SAMPLE_COUNT 34
 #	include "frag_ao.cginc"
-=======
-// HLSL and GLSL do not support arbitrarily sized arrays as function parameters (eg. float bla[]), whereas Cg does.
-#if !defined(UNITY_COMPILER_CG)
-
-#	define INPUT_SAMPLE_COUNT 8
-#	include "frag_ao.cginc"
-#	undef INPUT_SAMPLE_COUNT
-
-#	define INPUT_SAMPLE_COUNT 14
-#	include "frag_ao.cginc"
-#	undef INPUT_SAMPLE_COUNT
-
-#	define INPUT_SAMPLE_COUNT 26
-#	include "frag_ao.cginc"
-#	undef INPUT_SAMPLE_COUNT
-
-#	define INPUT_SAMPLE_COUNT 34
-#	include "frag_ao.cginc"
-#	undef INPUT_SAMPLE_COUNT
->>>>>>> b1e7e130151e489b1b5d34254c1b528e0ffd4407
 
 #else
 #	define INPUT_SAMPLE_COUNT
@@ -89,11 +64,7 @@ CGPROGRAM
 #pragma fragmentoption ARB_precision_hint_fastest
 
 
-<<<<<<< HEAD
-half4 frag (v2f_ao i) : COLOR
-=======
 half4 frag (v2f_ao i) : SV_Target
->>>>>>> b1e7e130151e489b1b5d34254c1b528e0ffd4407
 {
 	#define SAMPLE_COUNT 8
 	const float3 RAND_SAMPLES[SAMPLE_COUNT] = {
@@ -122,11 +93,7 @@ CGPROGRAM
 #pragma fragmentoption ARB_precision_hint_fastest
 
 
-<<<<<<< HEAD
-half4 frag (v2f_ao i) : COLOR
-=======
 half4 frag (v2f_ao i) : SV_Target
->>>>>>> b1e7e130151e489b1b5d34254c1b528e0ffd4407
 {
 	#define SAMPLE_COUNT 14
 	const float3 RAND_SAMPLES[SAMPLE_COUNT] = {
@@ -161,11 +128,7 @@ CGPROGRAM
 #pragma fragmentoption ARB_precision_hint_fastest
 
 
-<<<<<<< HEAD
-half4 frag (v2f_ao i) : COLOR
-=======
 half4 frag (v2f_ao i) : SV_Target
->>>>>>> b1e7e130151e489b1b5d34254c1b528e0ffd4407
 {
 	#define SAMPLE_COUNT 26
 	const float3 RAND_SAMPLES[SAMPLE_COUNT] = {
@@ -212,11 +175,7 @@ CGPROGRAM
 #include "UnityCG.cginc"
 
 struct v2f {
-<<<<<<< HEAD
-	float4 pos : POSITION;
-=======
 	float4 pos : SV_POSITION;
->>>>>>> b1e7e130151e489b1b5d34254c1b528e0ffd4407
 	float2 uv : TEXCOORD0;
 };
 
@@ -247,11 +206,7 @@ inline half CheckSame (half4 n, half4 nn)
 }
 
 
-<<<<<<< HEAD
-half4 frag( v2f i ) : COLOR
-=======
 half4 frag( v2f i ) : SV_Target
->>>>>>> b1e7e130151e489b1b5d34254c1b528e0ffd4407
 {
 	#define NUM_BLUR_SAMPLES 4
 	
@@ -292,11 +247,7 @@ CGPROGRAM
 #include "UnityCG.cginc"
 
 struct v2f {
-<<<<<<< HEAD
-	float4 pos : POSITION;
-=======
 	float4 pos : SV_POSITION;
->>>>>>> b1e7e130151e489b1b5d34254c1b528e0ffd4407
 	float2 uv[2] : TEXCOORD0;
 };
 
@@ -312,11 +263,7 @@ v2f vert (appdata_img v)
 sampler2D _MainTex;
 sampler2D _SSAO;
 
-<<<<<<< HEAD
-half4 frag( v2f i ) : COLOR
-=======
 half4 frag( v2f i ) : SV_Target
->>>>>>> b1e7e130151e489b1b5d34254c1b528e0ffd4407
 {
 	half4 c = tex2D (_MainTex, i.uv[0]);
 	half ao = tex2D (_SSAO, i.uv[1]).r;

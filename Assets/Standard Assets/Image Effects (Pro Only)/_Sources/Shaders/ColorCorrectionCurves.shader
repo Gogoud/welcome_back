@@ -21,21 +21,13 @@ Shader "Hidden/ColorCorrectionCurves" {
 	#include "UnityCG.cginc"
 	
 	struct v2f {
-<<<<<<< HEAD
-		float4 pos : POSITION;
-=======
 		float4 pos : SV_POSITION;
->>>>>>> b1e7e130151e489b1b5d34254c1b528e0ffd4407
 		float2 uv  : TEXCOORD0;
 		float2 uv2 : TEXCOORD1;
 	};
 	 
 	sampler2D _MainTex;
-<<<<<<< HEAD
 	sampler2D _CameraDepthTexture;
-=======
-	sampler2D_float _CameraDepthTexture;
->>>>>>> b1e7e130151e489b1b5d34254c1b528e0ffd4407
 	
 	float4 _CameraDepthTexture_ST;
 	uniform float4 _MainTex_TexelSize;
@@ -61,11 +53,7 @@ Shader "Hidden/ColorCorrectionCurves" {
 		return o;
 	} 
 	
-<<<<<<< HEAD
-	half4 frag(v2f i) : COLOR 
-=======
 	half4 frag(v2f i) : SV_Target 
->>>>>>> b1e7e130151e489b1b5d34254c1b528e0ffd4407
 	{
 		half4 color = tex2D(_MainTex, i.uv); 
 
@@ -75,11 +63,7 @@ Shader "Hidden/ColorCorrectionCurves" {
 		half3 green = tex2D(_RgbTex, half2(color.g, ycoords.y)).rgb * half3(0,1,0);
 		half3 blue = tex2D(_RgbTex, half2(color.b, ycoords.z)).rgb * half3(0,0,1);
 		
-<<<<<<< HEAD
-		half theDepth = UNITY_SAMPLE_DEPTH( tex2D (_CameraDepthTexture, i.uv2) );
-=======
 		half theDepth = SAMPLE_DEPTH_TEXTURE( _CameraDepthTexture, i.uv2) ;
->>>>>>> b1e7e130151e489b1b5d34254c1b528e0ffd4407
 		half zval = tex2D(_ZCurve, half2( Linear01Depth (theDepth), 0.5));
 		
 		half3 depthRed = tex2D(_RgbDepthTex, half2(color.r, ycoords.x)).rgb * half3(1,0,0);

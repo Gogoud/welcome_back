@@ -64,11 +64,7 @@ Shader "Hidden/NoiseAndGrain" {
 			return o; 
 		}
 
-<<<<<<< HEAD
-		float4 frag ( v2f i ) : COLOR
-=======
 		float4 frag ( v2f i ) : SV_Target
->>>>>>> b1e7e130151e489b1b5d34254c1b528e0ffd4407
 		{	
 			float4 color = (tex2D (_MainTex, i.uv_screen.xy));
 			
@@ -89,11 +85,7 @@ Shader "Hidden/NoiseAndGrain" {
 			return float4(Overlay(m, color.rgb), color.a);
 		} 
 
-<<<<<<< HEAD
-		float4 fragTmp ( v2f i ) : COLOR
-=======
 		float4 fragTmp ( v2f i ) : SV_Target
->>>>>>> b1e7e130151e489b1b5d34254c1b528e0ffd4407
 		{	
 			float4 color = (tex2D (_MainTex, i.uv_screen.xy));
 			
@@ -114,11 +106,7 @@ Shader "Hidden/NoiseAndGrain" {
 			return float4(m.rgb, color.a);
 		} 			
 
-<<<<<<< HEAD
-		float4 fragOverlayBlend	( v2f i ) : COLOR
-=======
 		float4 fragOverlayBlend	( v2f i ) : SV_Target
->>>>>>> b1e7e130151e489b1b5d34254c1b528e0ffd4407
 		{	
 			float4 color = tex2D(_MainTex, i.uv_screen.xy);
 			float4 m = tex2D(_NoiseTex, i.uv_screen.xy);

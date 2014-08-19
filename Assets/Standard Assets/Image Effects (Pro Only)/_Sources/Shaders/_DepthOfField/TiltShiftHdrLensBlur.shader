@@ -10,11 +10,7 @@
 	
 	struct v2f 
 	{
-<<<<<<< HEAD
-		float4 pos : POSITION;
-=======
 		float4 pos : SV_POSITION;
->>>>>>> b1e7e130151e489b1b5d34254c1b528e0ffd4407
 		float2 uv : TEXCOORD0;
 		float2 uv1 : TEXCOORD1;
 	};
@@ -111,29 +107,17 @@
 		return dot(tapCoord, tapCoord) * _BlurArea;
 	}	
 
-<<<<<<< HEAD
-	float4 fragIrisPreview (v2f i) : COLOR 
-=======
 	float4 fragIrisPreview (v2f i) : SV_Target 
->>>>>>> b1e7e130151e489b1b5d34254c1b528e0ffd4407
 	{
 		return WeightIrisMode(i.uv.xy) * 0.5;
 	}
 
-<<<<<<< HEAD
-	float4 fragFieldPreview (v2f i) : COLOR 
-=======
 	float4 fragFieldPreview (v2f i) : SV_Target 
->>>>>>> b1e7e130151e489b1b5d34254c1b528e0ffd4407
 	{
 		return WeightFieldMode(i.uv.xy) * 0.5;
 	}
 
-<<<<<<< HEAD
-	float4 fragUpsample (v2f i) : COLOR
-=======
 	float4 fragUpsample (v2f i) : SV_Target
->>>>>>> b1e7e130151e489b1b5d34254c1b528e0ffd4407
 	{
 		float4 blurred = tex2D(_Blurred, i.uv1.xy);
 		float4 frame = tex2D(_MainTex, i.uv.xy);
@@ -141,11 +125,7 @@
 		return lerp(frame, blurred, saturate(blurred.a));
 	}
 
-<<<<<<< HEAD
-	float4 fragIris (v2f i) : COLOR 
-=======
 	float4 fragIris (v2f i) : SV_Target 
->>>>>>> b1e7e130151e489b1b5d34254c1b528e0ffd4407
 	{
 		float4 centerTap = tex2D(_MainTex, i.uv.xy);
 		float4 sum = centerTap;
@@ -168,11 +148,7 @@
 		return float4(sum.rgb / (1.0 + NumDiscSamples), w);	
 	}
 	
-<<<<<<< HEAD
-	float4 fragField (v2f i) : COLOR 
-=======
 	float4 fragField (v2f i) : SV_Target 
->>>>>>> b1e7e130151e489b1b5d34254c1b528e0ffd4407
 	{
 		float4 centerTap = tex2D(_MainTex, i.uv.xy);
 		float4 sum = centerTap;
@@ -195,11 +171,7 @@
 		return float4(sum.rgb / (1.0 + NumDiscSamples), w);	
 	}
 
-<<<<<<< HEAD
-	float4 fragIrisHQ (v2f i) : COLOR 
-=======
 	float4 fragIrisHQ (v2f i) : SV_Target 
->>>>>>> b1e7e130151e489b1b5d34254c1b528e0ffd4407
 	{
 		float4 centerTap = tex2D(_MainTex, i.uv.xy);
 		float4 sum = centerTap;
@@ -224,11 +196,7 @@
 		return float4(sum.rgb / (1.0 + 2.0 * NumDiscSamples), w);
 	}
 	
-<<<<<<< HEAD
-	float4 fragFieldHQ (v2f i) : COLOR 
-=======
 	float4 fragFieldHQ (v2f i) : SV_Target 
->>>>>>> b1e7e130151e489b1b5d34254c1b528e0ffd4407
 	{
 		float4 centerTap = tex2D(_MainTex, i.uv.xy);
 		float4 sum = centerTap;

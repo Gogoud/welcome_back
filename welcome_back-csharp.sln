@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 11.00
 
 Project("{C50D7027-C783-6D27-0EEB-E0E8025221F1}") = "welcome_back", "Assembly-CSharp-firstpass-vs.csproj", "{BD0861ED-FC93-8D26-B0DA-4A727583395B}"
 EndProject
-Project("{C50D7027-C783-6D27-0EEB-E0E8025221F1}") = "welcome_back", "Assembly-CSharp-Editor-vs.csproj", "{17CE49AD-2050-CFA1-0FF0-319946698808}"
+Project("{C50D7027-C783-6D27-0EEB-E0E8025221F1}") = "welcome_back", "Assembly-CSharp-vs.csproj", "{E4C38223-3E8E-9DFE-BC09-963CCA39ED17}"
 EndProject
 Project("{C50D7027-C783-6D27-0EEB-E0E8025221F1}") = "welcome_back", "Assembly-CSharp-Editor-vs.csproj", "{17CE49AD-2050-CFA1-0FF0-319946698808}"
 EndProject
@@ -29,9 +29,9 @@ Global
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
-																																																																																																																																																																																																			GlobalSection(MonoDevelopProperties) = preSolution
+																																																																																																																																																																																																											GlobalSection(MonoDevelopProperties) = preSolution
 																																																		GlobalSection(MonoDevelopProperties) = preSolution
-																																																																																																																																																																																															GlobalSection(MonoDevelopProperties) = preSolution
+																																																																																																																																																																																														GlobalSection(MonoDevelopProperties) = preSolution
 																																																									GlobalSection(MonoDevelopProperties) = preSolution
 									GlobalSection(MonoDevelopProperties) = preSolution
 										GlobalSection(MonoDevelopProperties) = preSolution

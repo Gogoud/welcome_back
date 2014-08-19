@@ -177,11 +177,7 @@ v2f vert (appdata_img v)
 
 sampler2D _MainTex;
 
-<<<<<<< HEAD
-float4 frag (v2f i) : COLOR0
-=======
 float4 frag (v2f i) : SV_Target
->>>>>>> b1e7e130151e489b1b5d34254c1b528e0ffd4407
 {
 	return float4(FxaaPixelShader(i.uv, _MainTex, _MainTex_TexelSize.xy).xyz, 0.0f);
 }

@@ -10,31 +10,19 @@
 	#include "UnityCG.cginc"
 	
 	struct v2f {
-<<<<<<< HEAD
-		float4 pos : POSITION;
-=======
 		float4 pos : SV_POSITION;
->>>>>>> b1e7e130151e489b1b5d34254c1b528e0ffd4407
 		float2 uv : TEXCOORD0;
 		float2 uv1 : TEXCOORD1;
 	};
 
 	struct v2fRadius {
-<<<<<<< HEAD
-		float4 pos : POSITION;
-=======
 		float4 pos : SV_POSITION;
->>>>>>> b1e7e130151e489b1b5d34254c1b528e0ffd4407
 		float2 uv : TEXCOORD0;
 		float4 uv1[4] : TEXCOORD1;
 	};
 	
 	struct v2fBlur {
-<<<<<<< HEAD
-		float4 pos : POSITION;
-=======
 		float4 pos : SV_POSITION;
->>>>>>> b1e7e130151e489b1b5d34254c1b528e0ffd4407
 		float2 uv : TEXCOORD0;
 		float4 uv01 : TEXCOORD1;
 		float4 uv23 : TEXCOORD2;
@@ -44,11 +32,7 @@
 	};	
 	
 	uniform sampler2D _MainTex;
-<<<<<<< HEAD
 	uniform sampler2D _CameraDepthTexture;
-=======
-	uniform sampler2D_float _CameraDepthTexture;
->>>>>>> b1e7e130151e489b1b5d34254c1b528e0ffd4407
 	uniform sampler2D _FgOverlap;
 	uniform sampler2D _LowRez;
 	uniform float4 _CurveParams;
@@ -102,15 +86,9 @@
 
 	#define SCATTER_OVERLAP_SMOOTH (-0.265)
 
-<<<<<<< HEAD
-	inline float BokehWeightDisc(float4 sample, float sampleDistance, float4 centerSample)
-	{
-		return smoothstep(SCATTER_OVERLAP_SMOOTH, 0.0, sample.a - centerSample.a*sampleDistance); 
-=======
 	inline float BokehWeightDisc(float4 theSample, float sampleDistance, float4 centerSample)
 	{
 		return smoothstep(SCATTER_OVERLAP_SMOOTH, 0.0, theSample.a - centerSample.a*sampleDistance); 
->>>>>>> b1e7e130151e489b1b5d34254c1b528e0ffd4407
 	}
 
 	inline float2 BokehWeightDisc2(float4 sampleA, float4 sampleB, float2 sampleDistance2, float4 centerSample)
@@ -167,11 +145,7 @@
 		float3(-0.07214,0.60554,0.60982),
 	};	
 
-<<<<<<< HEAD
-	float4 fragBlurInsaneMQ (v2f i) : COLOR 
-=======
 	float4 fragBlurInsaneMQ (v2f i) : SV_Target 
->>>>>>> b1e7e130151e489b1b5d34254c1b528e0ffd4407
 	{
 		float4 centerTap = tex2D(_MainTex, i.uv1.xy);
 		float4 sum = centerTap;
@@ -201,11 +175,7 @@
 		return returnValue;
 	}		
 
-<<<<<<< HEAD
-	float4 fragBlurInsaneHQ (v2f i) : COLOR 
-=======
 	float4 fragBlurInsaneHQ (v2f i) : SV_Target 
->>>>>>> b1e7e130151e489b1b5d34254c1b528e0ffd4407
 	{
 		float4 centerTap = tex2D(_MainTex, i.uv1.xy);
 		float4 sum = centerTap;
@@ -249,11 +219,7 @@
 		return lerp(low, high, blend);
 	}
 
-<<<<<<< HEAD
-	float4 fragBlurUpsampleCombineHQ (v2f i) : COLOR 
-=======
 	float4 fragBlurUpsampleCombineHQ (v2f i) : SV_Target 
->>>>>>> b1e7e130151e489b1b5d34254c1b528e0ffd4407
 	{	
 		float4 bigBlur = tex2D(_LowRez, i.uv1.xy);
 		float4 centerTap = tex2D(_MainTex, i.uv1.xy);
@@ -279,11 +245,7 @@
 		return centerTap.a < 1e-2f ? centerTap : float4(smallBlur.rgb,centerTap.a);
 	}
 
-<<<<<<< HEAD
-	float4 fragBlurUpsampleCombineMQ (v2f i) : COLOR 
-=======
 	float4 fragBlurUpsampleCombineMQ (v2f i) : SV_Target 
->>>>>>> b1e7e130151e489b1b5d34254c1b528e0ffd4407
 	{			
 		float4 bigBlur = tex2D(_LowRez, i.uv1.xy);
 		float4 centerTap = tex2D(_MainTex, i.uv1.xy);
@@ -310,11 +272,7 @@
 		return centerTap.a < 1e-2f ? centerTap : float4(smallBlur.rgb,centerTap.a);
 	}	
 
-<<<<<<< HEAD
-	float4 fragBlurUpsampleCheap (v2f i) : COLOR 
-=======
 	float4 fragBlurUpsampleCheap (v2f i) : SV_Target 
->>>>>>> b1e7e130151e489b1b5d34254c1b528e0ffd4407
 	{			
 		float4 centerTap = tex2D(_MainTex, i.uv1.xy);
 		float4 bigBlur = tex2D(_LowRez, i.uv1.xy);
@@ -325,11 +283,7 @@
 		return float4(smallBlur.rgb, centerTap.a);
 	}	
 									
-<<<<<<< HEAD
-	float4 fragBlurBox (v2f i) : COLOR 
-=======
 	float4 fragBlurBox (v2f i) : SV_Target 
->>>>>>> b1e7e130151e489b1b5d34254c1b528e0ffd4407
 	{
 		const int TAPS = 12;
 
@@ -369,11 +323,7 @@
 	}		
 
 
-<<<<<<< HEAD
-	float4 fragVisualize (v2f i) : COLOR 
-=======
 	float4 fragVisualize (v2f i) : SV_Target 
->>>>>>> b1e7e130151e489b1b5d34254c1b528e0ffd4407
 	{
 		float4 returnValue = tex2D(_MainTex, i.uv1.xy);	
 		returnValue.rgb = lerp(float3(0.0,0.0,0.0), float3(1.0,1.0,1.0), saturate(returnValue.a/_CurveParams.x));
@@ -381,11 +331,7 @@
 	}
 
 
-<<<<<<< HEAD
-	float4 fragBoxDownsample (v2f i) : COLOR 
-=======
 	float4 fragBoxDownsample (v2f i) : SV_Target 
->>>>>>> b1e7e130151e489b1b5d34254c1b528e0ffd4407
 	{		
 		//float4 returnValue = tex2D(_MainTex, i.uv1.xy);			
 		float4 returnValue = tex2D(_MainTex, i.uv1.xy + 0.75*_MainTex_TexelSize.xy);
@@ -396,11 +342,7 @@
 		return returnValue/4;
 	}		
 
-<<<<<<< HEAD
-	float4 fragBlurAlphaWeighted (v2fBlur i) : COLOR 
-=======
 	float4 fragBlurAlphaWeighted (v2fBlur i) : SV_Target 
->>>>>>> b1e7e130151e489b1b5d34254c1b528e0ffd4407
 	{
 		const float ALPHA_WEIGHT = 2.0f;
 		float4 sum = float4 (0,0,0,0);
@@ -441,11 +383,7 @@
 		return sum;
 	}	
 	
-<<<<<<< HEAD
-	float4 fragBlurForFgCoc (v2fBlur i) : COLOR 
-=======
 	float4 fragBlurForFgCoc (v2fBlur i) : SV_Target 
->>>>>>> b1e7e130151e489b1b5d34254c1b528e0ffd4407
 	{
 		float4 sum = float4 (0,0,0,0);
 		float w = 0;
@@ -482,11 +420,7 @@
 		return sum;
 	}	
 
-<<<<<<< HEAD
-	float4 fragGaussBlur (v2fBlur i) : COLOR 
-=======
 	float4 fragGaussBlur (v2fBlur i) : SV_Target 
->>>>>>> b1e7e130151e489b1b5d34254c1b528e0ffd4407
 	{
 		float4 sum = float4 (0,0,0,0);
 		float w = 0;
@@ -523,11 +457,7 @@
 		return sum;
 	}
 
-<<<<<<< HEAD
-	float4 frag4TapBlurForLRSpawn (v2f i) : COLOR 
-=======
 	float4 frag4TapBlurForLRSpawn (v2f i) : SV_Target 
->>>>>>> b1e7e130151e489b1b5d34254c1b528e0ffd4407
 	{
 		float4 tap  =  tex2D(_MainTex, i.uv.xy);
 		
@@ -547,17 +477,10 @@
 		return outColor;
 	}
 
-<<<<<<< HEAD
-	float4 fragCaptureColorAndSignedCoc (v2f i) : COLOR 
-	{	
-		float4 color = tex2D (_MainTex, i.uv1.xy);
-		float d = UNITY_SAMPLE_DEPTH(tex2D(_CameraDepthTexture, i.uv1.xy));
-=======
 	float4 fragCaptureColorAndSignedCoc (v2f i) : SV_Target 
 	{	
 		float4 color = tex2D (_MainTex, i.uv1.xy);
 		float d = SAMPLE_DEPTH_TEXTURE(_CameraDepthTexture, i.uv1.xy);
->>>>>>> b1e7e130151e489b1b5d34254c1b528e0ffd4407
 		d = Linear01Depth (d);
 		color.a = _CurveParams.z * abs(d - _CurveParams.w) / (d + 1e-5f); 
 		color.a = clamp( max(0.0, color.a - _CurveParams.y), 0.0, _CurveParams.x) * sign(d - _CurveParams.w);
@@ -565,17 +488,10 @@
 		return color;
 	} 
 	
-<<<<<<< HEAD
-	float4 fragCaptureCoc (v2f i) : COLOR 
-	{	
-		float4 color = float4(0,0,0,0); //tex2D (_MainTex, i.uv1.xy);
-		float d = UNITY_SAMPLE_DEPTH(tex2D(_CameraDepthTexture, i.uv1.xy));
-=======
 	float4 fragCaptureCoc (v2f i) : SV_Target 
 	{	
 		float4 color = float4(0,0,0,0); //tex2D (_MainTex, i.uv1.xy);
 		float d = SAMPLE_DEPTH_TEXTURE(_CameraDepthTexture, i.uv1.xy);
->>>>>>> b1e7e130151e489b1b5d34254c1b528e0ffd4407
 		d = Linear01Depth (d);
 		color.a = _CurveParams.z * abs(d - _CurveParams.w) / (d + 1e-5f); 
 		color.a = clamp( max(0.0, color.a - _CurveParams.y), 0.0, _CurveParams.x);
@@ -583,29 +499,17 @@
 		return color;
 	} 
 
-<<<<<<< HEAD
-	float4 AddFgCoc (v2f i) : COLOR 
-=======
 	float4 AddFgCoc (v2f i) : SV_Target 
->>>>>>> b1e7e130151e489b1b5d34254c1b528e0ffd4407
 	{	
 		return tex2D (_MainTex, i.uv1.xy);
 	} 
 
-<<<<<<< HEAD
-	float4 fragMergeCoc (v2f i) : COLOR 
-=======
 	float4 fragMergeCoc (v2f i) : SV_Target 
->>>>>>> b1e7e130151e489b1b5d34254c1b528e0ffd4407
 	{	
 		float4 color = tex2D (_FgOverlap, i.uv1.xy); // this is the foreground overlap value
 		float fgCoc = color.a;
 
-<<<<<<< HEAD
-		float d = UNITY_SAMPLE_DEPTH(tex2D(_CameraDepthTexture, i.uv1.xy));
-=======
 		float d = SAMPLE_DEPTH_TEXTURE(_CameraDepthTexture, i.uv1.xy);
->>>>>>> b1e7e130151e489b1b5d34254c1b528e0ffd4407
 		d = Linear01Depth (d);
 		color.a = _CurveParams.z * abs(d - _CurveParams.w) / (d + 1e-5f); 
 		color.a = clamp( max(0.0, color.a - _CurveParams.y), 0.0, _CurveParams.x);
@@ -613,11 +517,7 @@
 		return max(color.aaaa, float4(fgCoc,fgCoc,fgCoc,fgCoc));
 	} 
 
-<<<<<<< HEAD
-	float4 fragCombineCocWithMaskBlur (v2f i) : COLOR 
-=======
 	float4 fragCombineCocWithMaskBlur (v2f i) : SV_Target 
->>>>>>> b1e7e130151e489b1b5d34254c1b528e0ffd4407
 	{	
 		float bgAndFgCoc = tex2D (_MainTex, i.uv1.xy).a;
 		float fgOverlapCoc = tex2D (_FgOverlap, i.uv1.xy).a;
@@ -625,17 +525,10 @@
 		return (bgAndFgCoc < 0.01) * saturate(fgOverlapCoc-bgAndFgCoc);
 	} 
 	
-<<<<<<< HEAD
-	float4 fragCaptureForegroundCoc (v2f i) : COLOR 
-	{	
-		float4 color = float4(0,0,0,0); //tex2D (_MainTex, i.uv1.xy);
-		float d = UNITY_SAMPLE_DEPTH(tex2D(_CameraDepthTexture, i.uv1.xy));
-=======
 	float4 fragCaptureForegroundCoc (v2f i) : SV_Target 
 	{	
 		float4 color = float4(0,0,0,0); //tex2D (_MainTex, i.uv1.xy);
 		float d = SAMPLE_DEPTH_TEXTURE(_CameraDepthTexture, i.uv1.xy);
->>>>>>> b1e7e130151e489b1b5d34254c1b528e0ffd4407
 		d = Linear01Depth (d);
 		color.a = _CurveParams.z * (_CurveParams.w-d) / (d + 1e-5f);
 		color.a = clamp(max(0.0, color.a - _CurveParams.y), 0.0, _CurveParams.x);
@@ -643,17 +536,10 @@
 		return color;	
 	}	
 
-<<<<<<< HEAD
-	float4 fragCaptureForegroundCocMask (v2f i) : COLOR 
-	{	
-		float4 color = float4(0,0,0,0);
-		float d = UNITY_SAMPLE_DEPTH(tex2D(_CameraDepthTexture, i.uv1.xy));
-=======
 	float4 fragCaptureForegroundCocMask (v2f i) : SV_Target 
 	{	
 		float4 color = float4(0,0,0,0);
 		float d = SAMPLE_DEPTH_TEXTURE(_CameraDepthTexture, i.uv1.xy);
->>>>>>> b1e7e130151e489b1b5d34254c1b528e0ffd4407
 		d = Linear01Depth (d);
 		color.a = _CurveParams.z * (_CurveParams.w-d) / (d + 1e-5f);
 		color.a = clamp(max(0.0, color.a - _CurveParams.y), 0.0, _CurveParams.x);
@@ -661,21 +547,13 @@
 		return color.a > 0;	
 	}	
 	
-<<<<<<< HEAD
-	float4 fragBlendInHighRez (v2f i) : COLOR 
-=======
 	float4 fragBlendInHighRez (v2f i) : SV_Target 
->>>>>>> b1e7e130151e489b1b5d34254c1b528e0ffd4407
 	{
 		float4 tapHighRez =  tex2D(_MainTex, i.uv.xy);
 		return float4(tapHighRez.rgb, 1.0-saturate(tapHighRez.a*5.0));
 	}
 	
-<<<<<<< HEAD
-	float4 fragBlendInLowRezParts (v2f i) : COLOR 
-=======
 	float4 fragBlendInLowRezParts (v2f i) : SV_Target 
->>>>>>> b1e7e130151e489b1b5d34254c1b528e0ffd4407
 	{
 		float4 from = tex2D(_MainTex, i.uv1.xy);
 		from.a = saturate(from.a * _Offsets.w) / (_CurveParams.x + 1e-5f);
@@ -684,21 +562,13 @@
 		return from;
 	}
 	
-<<<<<<< HEAD
-	float4 fragUpsampleWithAlphaMask(v2f i) : COLOR 
-=======
 	float4 fragUpsampleWithAlphaMask(v2f i) : SV_Target 
->>>>>>> b1e7e130151e489b1b5d34254c1b528e0ffd4407
 	{
 		float4 c = tex2D(_MainTex, i.uv1.xy);
 		return c;
 	}		
 	
-<<<<<<< HEAD
-	float4 fragAlphaMask(v2f i) : COLOR 
-=======
 	float4 fragAlphaMask(v2f i) : SV_Target 
->>>>>>> b1e7e130151e489b1b5d34254c1b528e0ffd4407
 	{
 		float4 c = tex2D(_MainTex, i.uv1.xy);
 		c.a = saturate(c.a*100.0);

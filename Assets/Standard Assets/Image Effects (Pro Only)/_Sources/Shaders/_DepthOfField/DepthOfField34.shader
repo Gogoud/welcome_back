@@ -11,49 +11,29 @@
 	#include "UnityCG.cginc"
 	
 	struct v2f {
-<<<<<<< HEAD
-		half4 pos : POSITION;
-=======
 		half4 pos : SV_POSITION;
->>>>>>> b1e7e130151e489b1b5d34254c1b528e0ffd4407
 		half2 uv1 : TEXCOORD0;
 	};
 	
 	struct v2fDofApply {
-<<<<<<< HEAD
-		half4 pos : POSITION;
-=======
 		half4 pos : SV_POSITION;
->>>>>>> b1e7e130151e489b1b5d34254c1b528e0ffd4407
 		half2 uv : TEXCOORD0;
 	};
 	
 	struct v2fRadius {
-<<<<<<< HEAD
-		half4 pos : POSITION;
-=======
 		half4 pos : SV_POSITION;
->>>>>>> b1e7e130151e489b1b5d34254c1b528e0ffd4407
 		half2 uv : TEXCOORD0;
 		half4 uv1[4] : TEXCOORD1;
 	};
 	
 	struct v2fDown {
-<<<<<<< HEAD
-		half4 pos : POSITION;
-=======
 		half4 pos : SV_POSITION;
->>>>>>> b1e7e130151e489b1b5d34254c1b528e0ffd4407
 		half2 uv0 : TEXCOORD0;
 		half2 uv[2] : TEXCOORD1;
 	};	 
 			
 	sampler2D _MainTex;
-<<<<<<< HEAD
 	sampler2D _CameraDepthTexture;
-=======
-	sampler2D_float _CameraDepthTexture;
->>>>>>> b1e7e130151e489b1b5d34254c1b528e0ffd4407
 	sampler2D _TapLowBackground;	
 	sampler2D _TapLowForeground;
 	sampler2D _TapMedium;
@@ -146,11 +126,7 @@
 		return littleBlur;
 	}	
 	
-<<<<<<< HEAD
-	half4 fragDownsampleWithCocConserve(v2fDown i) : COLOR {
-=======
 	half4 fragDownsampleWithCocConserve(v2fDown i) : SV_Target {
->>>>>>> b1e7e130151e489b1b5d34254c1b528e0ffd4407
 		half2 rowOfs[4];   
 		
   		rowOfs[0] = half2(0.0, 0.0);  
@@ -178,11 +154,7 @@
 		return color;
 	}
 	
-<<<<<<< HEAD
-	half4 fragDofApplyBg (v2fDofApply i) : COLOR {		
-=======
 	half4 fragDofApplyBg (v2fDofApply i) : SV_Target {		
->>>>>>> b1e7e130151e489b1b5d34254c1b528e0ffd4407
 		half4 tapHigh = tex2D (_MainTex, i.uv.xy);
 		
 		#if UNITY_UV_STARTS_AT_TOP
@@ -195,11 +167,7 @@
 		return tapHigh; 
 	}	
 	
-<<<<<<< HEAD
-	half4 fragDofApplyBgDebug (v2fDofApply i) : COLOR {		
-=======
 	half4 fragDofApplyBgDebug (v2fDofApply i) : SV_Target {		
->>>>>>> b1e7e130151e489b1b5d34254c1b528e0ffd4407
 		half4 tapHigh = tex2D (_MainTex, i.uv.xy); 	
 		
 		half4 tapLow = tex2D (_TapLowBackground, i.uv.xy);
@@ -214,11 +182,7 @@
 		return lerp (tapHigh, tapLow, tapHigh.a);
 	}		
 	
-<<<<<<< HEAD
-	half4 fragDofApplyFg (v2fDofApply i) : COLOR {
-=======
 	half4 fragDofApplyFg (v2fDofApply i) : SV_Target {
->>>>>>> b1e7e130151e489b1b5d34254c1b528e0ffd4407
 		half4 fgBlur = tex2D(_TapLowForeground, i.uv.xy);	
 		
 		#if UNITY_UV_STARTS_AT_TOP
@@ -235,11 +199,7 @@
 		return lerp (fgColor, fgBlur, saturate(fgBlur.a));
 	}	
 	
-<<<<<<< HEAD
-	half4 fragDofApplyFgDebug (v2fDofApply i) : COLOR {
-=======
 	half4 fragDofApplyFgDebug (v2fDofApply i) : SV_Target {
->>>>>>> b1e7e130151e489b1b5d34254c1b528e0ffd4407
 		half4 fgBlur = tex2D(_TapLowForeground, i.uv.xy);		
 					
 		half4 fgColor = tex2D(_MainTex,i.uv.xy);
@@ -255,15 +215,9 @@
 		return lerp ( fgColor, fgBlur, saturate(fgBlur.a));
 	}	
 		
-<<<<<<< HEAD
-	half4 fragCocBg (v2f i) : COLOR {
-		
-		float d = UNITY_SAMPLE_DEPTH ( tex2D (_CameraDepthTexture, i.uv1.xy) );
-=======
 	half4 fragCocBg (v2f i) : SV_Target {
 		
 		float d = SAMPLE_DEPTH_TEXTURE (_CameraDepthTexture, i.uv1.xy);
->>>>>>> b1e7e130151e489b1b5d34254c1b528e0ffd4407
 		d = Linear01Depth (d);
 		half coc = 0.0; 
 		
@@ -276,11 +230,7 @@
 		return coc;
 	} 
 	
-<<<<<<< HEAD
-	half4 fragCocFg (v2f i) : COLOR {		
-=======
 	half4 fragCocFg (v2f i) : SV_Target {		
->>>>>>> b1e7e130151e489b1b5d34254c1b528e0ffd4407
 		half4 color = tex2D (_MainTex, i.uv1.xy);
 		color.a = 0.0;
 
@@ -289,11 +239,7 @@
 			i.uv1.xy = i.uv1.xy * half2(1,-1)+half2(0,1);
 		#endif
 
-<<<<<<< HEAD
-		float d = UNITY_SAMPLE_DEPTH (tex2D (_CameraDepthTexture, i.uv1.xy) );
-=======
 		float d = SAMPLE_DEPTH_TEXTURE (_CameraDepthTexture, i.uv1.xy);
->>>>>>> b1e7e130151e489b1b5d34254c1b528e0ffd4407
 		d = Linear01Depth (d);	
 		
 		half focalDistance01 = (_CurveParams.w - _CurveParams.z);	
@@ -307,39 +253,23 @@
 	
 	// not being used atm
 	
-<<<<<<< HEAD
-	half4 fragMask (v2f i) : COLOR {
-=======
 	half4 fragMask (v2f i) : SV_Target {
->>>>>>> b1e7e130151e489b1b5d34254c1b528e0ffd4407
 		return half4(0,0,0,0); 
 	}	
 	
 	// used for simple one one blend
 	
-<<<<<<< HEAD
-	half4 fragAddBokeh (v2f i) : COLOR {	
-=======
 	half4 fragAddBokeh (v2f i) : SV_Target {	
->>>>>>> b1e7e130151e489b1b5d34254c1b528e0ffd4407
 		half4 from = tex2D( _MainTex, i.uv1.xy );
 		return from;
 	}
 	
-<<<<<<< HEAD
-	half4 fragAddFgBokeh (v2f i) : COLOR {		
-=======
 	half4 fragAddFgBokeh (v2f i) : SV_Target {		
->>>>>>> b1e7e130151e489b1b5d34254c1b528e0ffd4407
 		half4 from = tex2D( _MainTex, i.uv1.xy );
 		return from; 
 	}
 		
-<<<<<<< HEAD
-	half4 fragDarkenForBokeh(v2fRadius i) : COLOR {		
-=======
 	half4 fragDarkenForBokeh(v2fRadius i) : SV_Target {		
->>>>>>> b1e7e130151e489b1b5d34254c1b528e0ffd4407
 		half4 fromOriginal = tex2D(_MainTex, i.uv.xy);
 		half4 lowRez = BokehPrereqs (_MainTex, i.uv1, fromOriginal, _Threshhold.z);
 		half4 outColor = half4(0,0,0, fromOriginal.a);
@@ -363,11 +293,7 @@
 		return outColor;
 	}
  
-<<<<<<< HEAD
- 	half4 fragExtractAndAddToBokeh (v2fRadius i) : COLOR {	
-=======
  	half4 fragExtractAndAddToBokeh (v2fRadius i) : SV_Target {	
->>>>>>> b1e7e130151e489b1b5d34254c1b528e0ffd4407
 		half4 from = tex2D(_MainTex, i.uv.xy);
 		half4 lowRez = BokehPrereqs(_MainTex, i.uv1, from, _Threshhold.z);
 		half4 outColor = from;

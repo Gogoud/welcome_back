@@ -12,11 +12,7 @@ Shader "Hidden/BlurEffectConeTap" {
 	CGINCLUDE
 	#include "UnityCG.cginc"
 	struct v2f {
-<<<<<<< HEAD
-		float4 pos : POSITION;
-=======
 		float4 pos : SV_POSITION;
->>>>>>> b1e7e130151e489b1b5d34254c1b528e0ffd4407
 		half2 uv : TEXCOORD0;
 		half2 taps[4] : TEXCOORD1; 
 	};
@@ -33,11 +29,7 @@ Shader "Hidden/BlurEffectConeTap" {
 		o.taps[3] = o.uv - _MainTex_TexelSize * _BlurOffsets.xy * half2(1,-1);
 		return o;
 	}
-<<<<<<< HEAD
-	half4 frag(v2f i) : COLOR {
-=======
 	half4 frag(v2f i) : SV_Target {
->>>>>>> b1e7e130151e489b1b5d34254c1b528e0ffd4407
 		half4 color = tex2D(_MainTex, i.taps[0]);
 		color += tex2D(_MainTex, i.taps[1]);
 		color += tex2D(_MainTex, i.taps[2]);

@@ -31,7 +31,7 @@ public class SuperTriggerEditor : Editor
 		}
 		else
 		{
-			m_FoldoutAll = NGUIEditorTools.DrawHeader(m_Description,m_FoldoutAll);
+			m_FoldoutAll = NGUIEditorTools.DrawHeader(ST.m_Description,m_FoldoutAll);
 		}
 		if(m_FoldoutAll)
 		{
@@ -41,7 +41,7 @@ public class SuperTriggerEditor : Editor
 			GUILayout.BeginHorizontal(GUILayout.Height(m_RowHeight));
 			GUILayout.Space(10);
 			EditorGUILayout.LabelField ("Description", GUILayout.Height (m_TextHeight), GUILayout.Width (103));	
-			m_Description = EditorGUILayout.TextField(m_Description, GUILayout.Height (m_BoxHeight),GUILayout.Width (260));
+			ST.m_Description = EditorGUILayout.TextField(ST.m_Description, GUILayout.Height (m_BoxHeight),GUILayout.Width (260));
 			GUILayout.EndHorizontal();
 
 			EditorGUI.indentLevel++;

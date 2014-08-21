@@ -25,6 +25,7 @@ public class SuperTrigger : ObjectComponent
 	#endregion
 
 	#region EditorVariables
+	public string			  m_Description	  = "";
 	public List<TriggerEvent> m_TriggerEvents = new List<TriggerEvent>();
 	#endregion
 	

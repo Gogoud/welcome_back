@@ -1,7 +1,7 @@
 fileFormatVersion: 2
 guid: f582034224ed35243b2f74bb8d2286be
 ModelImporter:
-  serializedVersion: 16
+  serializedVersion: 15
   fileIDToRecycleName:
     100000: //RootNode
     400000: //RootNode
@@ -41,10 +41,10 @@ ModelImporter:
     secondaryUVHardAngle: 66
     secondaryUVPackMargin: 1
   tangentSpace:
-    normalSmoothAngle: 180
+    normalSmoothAngle: 0
     splitTangentsAcrossUV: 1
-    normalImportMode: 0
-    tangentImportMode: 0
+    normalImportMode: 1
+    tangentImportMode: 1
   importAnimation: 1
   copyAvatar: 0
   humanDescription:
@@ -60,5 +60,4 @@ ModelImporter:
     rootMotionBoneName: 
   lastHumanDescriptionAvatarSource: {instanceID: 0}
   animationType: 2
-  additionalBone: 0
   userData: 

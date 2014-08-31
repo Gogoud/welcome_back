@@ -156,6 +156,7 @@
      <Compile Include="Assets\Project Assets\Scripts\Event\Effects\LockUnlock.cs" />
      <Compile Include="Assets\Project Assets\Scripts\Event\Effects\OpenCloseDoor.cs" />
      <Compile Include="Assets\Project Assets\Scripts\Event\Effects\OpenCloseDrawer.cs" />
+     <Compile Include="Assets\Project Assets\Scripts\Event\Effects\Rotate.cs" />
      <Compile Include="Assets\Project Assets\Scripts\Event\Effects\SoundEffect.cs" />
      <Compile Include="Assets\Project Assets\Scripts\Event\Effects\TriggerLights.cs" />
      <Compile Include="Assets\Project Assets\Scripts\Event\EventSystem.cs" />
@@ -330,6 +331,7 @@
      <None Include="Assets\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\SimpleClear.shader" />
      <None Include="Assets\NGUI\Resources\Shaders\Unlit - Transparent Colored (SoftClip).shader" />
      <None Include="Assets\Standard Assets\Tessellation Shaders\BumpedSpecularDisplacement.shader" />
+     <None Include="Assets\Shader\ViktorsClothShader.shader" />
      <None Include="Assets\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\_Antialiasing\FXAA3Console.shader" />
      <None Include="Assets\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\_Antialiasing\FXAAPreset2.shader" />
      <None Include="Assets\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\_BloomAndFlares\BlurAndFlares.shader" />

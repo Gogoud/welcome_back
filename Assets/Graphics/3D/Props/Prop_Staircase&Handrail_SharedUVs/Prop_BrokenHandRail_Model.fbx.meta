@@ -1,13 +1,26 @@
 fileFormatVersion: 2
 guid: 7f31f5340a7acdd4087ca9c372a93aad
 ModelImporter:
-  serializedVersion: 15
+  serializedVersion: 16
   fileIDToRecycleName:
     100000: //RootNode
+    100002: Camera
+    100004: Lamp
+    100006: Prop_BrokenHandRail
+    100008: Prop_BrokenHandRail.001
     400000: //RootNode
+    400002: Camera
+    400004: Lamp
+    400006: Prop_BrokenHandRail
+    400008: Prop_BrokenHandRail.001
     2300000: //RootNode
+    2300002: Prop_BrokenHandRail
+    2300004: Prop_BrokenHandRail.001
     3300000: //RootNode
+    3300002: Prop_BrokenHandRail
+    3300004: Prop_BrokenHandRail.001
     4300000: Prop_BrokenHandRail
+    4300002: Prop_BrokenHandRail.001
     9500000: //RootNode
   materials:
     importMaterials: 1
@@ -17,6 +30,7 @@ ModelImporter:
     legacyGenerateAnimations: 4
     bakeSimulation: 0
     optimizeGameObjects: 0
+    motionNodeName: 
     animationCompression: 1
     animationRotationError: .5
     animationPositionError: .5
@@ -27,7 +41,7 @@ ModelImporter:
     isReadable: 1
   meshes:
     lODScreenPercentages: []
-    globalScale: .00999999978
+    globalScale: 1
     meshCompression: 0
     addColliders: 0
     importBlendShapes: 1
@@ -60,4 +74,5 @@ ModelImporter:
     rootMotionBoneName: 
   lastHumanDescriptionAvatarSource: {instanceID: 0}
   animationType: 2
+  additionalBone: 0
   userData: 

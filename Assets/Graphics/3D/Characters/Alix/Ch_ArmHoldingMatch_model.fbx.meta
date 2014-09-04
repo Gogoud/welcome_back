@@ -1,13 +1,22 @@
 fileFormatVersion: 2
 guid: 27eec60cb2de9d14dac451b10b42af24
 ModelImporter:
-  serializedVersion: 16
+  serializedVersion: 15
   fileIDToRecycleName:
     100000: //RootNode
+    100002: Ch_ArmHoldingMatch
+    100004: Ch_ArmHoldingMatch1
     400000: //RootNode
+    400002: Ch_ArmHoldingMatch
+    400004: Ch_ArmHoldingMatch1
     2300000: //RootNode
+    2300002: Ch_ArmHoldingMatch
+    2300004: Ch_ArmHoldingMatch1
     3300000: //RootNode
+    3300002: Ch_ArmHoldingMatch
+    3300004: Ch_ArmHoldingMatch1
     4300000: Ch_ArmHoldingMatch
+    4300002: Ch_ArmHoldingMatch1
     9500000: //RootNode
   materials:
     importMaterials: 1
@@ -17,7 +26,6 @@ ModelImporter:
     legacyGenerateAnimations: 4
     bakeSimulation: 0
     optimizeGameObjects: 0
-    motionNodeName: 
     animationCompression: 1
     animationRotationError: .5
     animationPositionError: .5
@@ -61,5 +69,4 @@ ModelImporter:
     rootMotionBoneName: 
   lastHumanDescriptionAvatarSource: {instanceID: 0}
   animationType: 2
-  additionalBone: 0
   userData: 

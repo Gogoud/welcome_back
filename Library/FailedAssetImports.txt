@@ -1,1 +1,0 @@
-Assets/Prefabs/attic_prefab.prefab

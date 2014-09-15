@@ -1,7 +1,7 @@
 fileFormatVersion: 2
 guid: a612c3f81537f10408cb6c79dcad9ccf
 ModelImporter:
-  serializedVersion: 16
+  serializedVersion: 15
   fileIDToRecycleName:
     100000: //RootNode
     100002: Refridgerator 1
@@ -72,5 +72,4 @@ ModelImporter:
     rootMotionBoneName: 
   lastHumanDescriptionAvatarSource: {instanceID: 0}
   animationType: 2
-  additionalBone: 0
   userData: 

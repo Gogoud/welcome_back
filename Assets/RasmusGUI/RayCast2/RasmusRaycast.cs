@@ -143,7 +143,7 @@ public class RasmusRaycast : MonoBehaviour
 				{
 					if(m_HoldObject.GetComponent<PickUp>())
 					{
-						if(m_HoldObject.GetComponent<PickUp>().GetInspecting() == false)
+						//if(m_HoldObject.GetComponent<PickUp>().GetInspecting() == false && m_HoldObject.GetComponent<ItemDiscription>() != null)
 						{
 							m_Manager.GetComponent<Manager>().AddInventoryItem(m_HoldObject);
 							m_Manager.GetComponent<Manager>().SetInventoryFocusOnSelect();
@@ -194,6 +194,14 @@ public class RasmusRaycast : MonoBehaviour
 		{
 			if(Physics.Raycast(ray, out hit, m_Distance, m_LayerMaskHover))
 			{
+				if(hit.collider.gameObject.GetComponent<HoverTrigger>())
+				{
+					hit.collider.gameObject.GetComponent<HoverTrigger>().HoverTriggerActivate();
+				}
+				//if(hit.collider.gameObject.GetComponent<HoverText>())
+				//{
+				//	m_Cursor.GetComponentInChildren<GUIText>().text = hit.collider.gameObject.GetComponent<HoverText>().m_Text;
+				//}
 				if(hit.collider.gameObject.layer != 0)
 				{
 					//if(hit.collider.gameObject.GetComponent<HoverTrigger>())

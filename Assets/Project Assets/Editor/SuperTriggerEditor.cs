@@ -41,7 +41,7 @@ public class SuperTriggerEditor : Editor
 			GUILayout.BeginHorizontal(GUILayout.Height(m_RowHeight));
 			GUILayout.Space(10);
 			EditorGUILayout.LabelField ("Description", GUILayout.Height (m_TextHeight), GUILayout.Width (103));	
-			ST.m_Description = EditorGUILayout.TextField(ST.m_Description, GUILayout.Height (m_BoxHeight),GUILayout.Width (260));
+			m_Description = EditorGUILayout.TextField(m_Description, GUILayout.Height (m_BoxHeight),GUILayout.Width (260));
 			GUILayout.EndHorizontal();
 
 			EditorGUI.indentLevel++;
@@ -56,6 +56,7 @@ public class SuperTriggerEditor : Editor
 				CollisionLayout ();
 				ZoneTimerLayout();
 				OnClickLayout ();
+				HoverTrigger ();
 				NGUIEditorTools.EndContents();
 				EditorGUILayout.Separator();
 			}
@@ -180,6 +181,11 @@ public class SuperTriggerEditor : Editor
 					GUILayout.BeginHorizontal();
 					GUILayout.Space(10);
 					ST.m_TriggerEvents[i].m_FoldOutAfterEvents = NGUIEditorTools.DrawHeader("Trigger after events",ST.m_TriggerEvents[i].m_FoldOutAfterEvents);
+					GUILayout.EndHorizontal();
+
+					GUILayout.BeginHorizontal(GUILayout.Height(m_RowHeight));
+					EditorGUILayout.LabelField ("Trigger once", GUILayout.Height (m_TextHeight), GUILayout.Width (95));
+					ST.m_TriggerEvents[i].m_TriggerOnce = EditorGUILayout.Toggle(ST.m_TriggerEvents[i].m_TriggerOnce,GUILayout.Height (m_BoxHeight), GUILayout.Width (30));
 					GUILayout.EndHorizontal();
 
 					if(ST.m_TriggerEvents[i].m_FoldOutAfterEvents)
@@ -307,4 +313,9 @@ public class SuperTriggerEditor : Editor
 	{
 		ST.m_Collision = EditorGUILayout.Toggle ("Collision: ", ST.m_Collision, GUILayout.Height (15));
 	}
+	void HoverTrigger()
+	{
+		ST.m_Hover = EditorGUILayout.Toggle ("Hover: ", ST.m_Hover, GUILayout.Height (15));
+	}
+
 }

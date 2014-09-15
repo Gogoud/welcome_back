@@ -20,6 +20,8 @@ public class SuperTrigger : ObjectComponent
 
 	public bool      m_OnClick;
 
+	public bool      m_Hover;
+
 	public bool		 m_ZoneTimer;
 	public float 	 m_TimerValue;
 	#endregion
@@ -43,7 +45,9 @@ public class SuperTrigger : ObjectComponent
 		if(m_OnClick){
 			gameObject.AddComponent<OnClickTrigger>();
 		}
-
+		if(m_Hover){
+			gameObject.AddComponent<HoverTrigger>();
+		}
 	}
 
 	public void ActivateTrigger()
@@ -84,7 +88,11 @@ public class SuperTrigger : ObjectComponent
 					{
 						if(CheckList(m_TriggerEvents[i].m_EventIDs,es,m_TriggerEvents[i].m_EventsTriggered))
 						{
-							es[j].ActivateEvents();
+							if(!m_TriggerEvents[i].m_HasTriggered)
+							{
+								es[j].ActivateEvents();
+								m_TriggerEvents[i].m_HasTriggered = true;
+							}
 						}
 					}
 					else

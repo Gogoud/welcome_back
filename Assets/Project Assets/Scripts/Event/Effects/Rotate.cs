@@ -8,8 +8,8 @@ public class Rotate : MonoBehaviour
 
 	private  float Rotation = 10f;
 	private  bool RotateLeft = true;
-	private static float RotationSpeed = 2f;
-	private static float RotationLimit = 7f;
+	private  float RotationSpeed = 2f;
+	private  float RotationLimit = 7f;
 	// Use this for initialization
 	void Start () 
 	{

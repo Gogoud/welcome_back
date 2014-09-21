@@ -228,6 +228,7 @@
      <Compile Include="Assets\RasmusGUI\xbox\InputGUITexture.cs" />
      <Compile Include="Assets\Rope_line.cs" />
      <Compile Include="Assets\RotateSwing.cs" />
+     <Compile Include="Assets\Scripts\MoveFireplaceLight.cs" />
      <Compile Include="Assets\handleGodRay.cs" />
      <None Include="Assets\NGUI\Resources\Shaders\Unlit - Depth Cutout.shader" />
      <None Include="Assets\Standard Assets\Projectors\Guidelines.txt" />

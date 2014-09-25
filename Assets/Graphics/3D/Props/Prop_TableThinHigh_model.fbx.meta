@@ -10,14 +10,13 @@ ModelImporter:
     4300000: Prop_TableHighThin
     9500000: //RootNode
   materials:
-    importMaterials: 0
+    importMaterials: 1
     materialName: 0
     materialSearch: 1
   animations:
     legacyGenerateAnimations: 4
     bakeSimulation: 0
     optimizeGameObjects: 0
-    motionNodeName: 
     animationCompression: 1
     animationRotationError: .5
     animationPositionError: .5
@@ -29,11 +28,11 @@ ModelImporter:
   meshes:
     lODScreenPercentages: []
     globalScale: 1
-    meshCompression: 3
+    meshCompression: 0
     addColliders: 0
     importBlendShapes: 1
     swapUVChannels: 0
-    generateSecondaryUV: 1
+    generateSecondaryUV: 0
     useFileUnits: 1
     optimizeMeshForGPU: 1
     weldVertices: 1

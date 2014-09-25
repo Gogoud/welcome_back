@@ -1,7 +1,7 @@
 fileFormatVersion: 2
 guid: 7521ff4019ce329468bf2a0c5fbbd2eb
 ModelImporter:
-  serializedVersion: 16
+  serializedVersion: 15
   fileIDToRecycleName:
     100000: //RootNode
     400000: //RootNode
@@ -10,14 +10,13 @@ ModelImporter:
     4300000: ComputerChair
     9500000: //RootNode
   materials:
-    importMaterials: 0
+    importMaterials: 1
     materialName: 0
     materialSearch: 1
   animations:
     legacyGenerateAnimations: 4
     bakeSimulation: 0
     optimizeGameObjects: 0
-    motionNodeName: 
     animationCompression: 1
     animationRotationError: .5
     animationPositionError: .5
@@ -28,7 +27,7 @@ ModelImporter:
     isReadable: 1
   meshes:
     lODScreenPercentages: []
-    globalScale: 1
+    globalScale: .00999999978
     meshCompression: 3
     addColliders: 0
     importBlendShapes: 1
@@ -61,5 +60,4 @@ ModelImporter:
     rootMotionBoneName: 
   lastHumanDescriptionAvatarSource: {instanceID: 0}
   animationType: 2
-  additionalBone: 0
   userData: 

@@ -20,7 +20,7 @@ ModelImporter:
     4300004: Prop_BrokenCoffeetable
     9500000: //RootNode
   materials:
-    importMaterials: 0
+    importMaterials: 1
     materialName: 0
     materialSearch: 1
   animations:
@@ -38,8 +38,8 @@ ModelImporter:
     isReadable: 1
   meshes:
     lODScreenPercentages: []
-    globalScale: 1
-    meshCompression: 3
+    globalScale: .00999999978
+    meshCompression: 0
     addColliders: 0
     importBlendShapes: 1
     swapUVChannels: 0

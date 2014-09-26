@@ -1,7 +1,7 @@
 fileFormatVersion: 2
 guid: 40d9346edf3b5474d9c0430774114702
 ModelImporter:
-  serializedVersion: 15
+  serializedVersion: 16
   fileIDToRecycleName:
     100000: CeilingLamp
     100002: polySurface1
@@ -78,4 +78,5 @@ ModelImporter:
     rootMotionBoneName: 
   lastHumanDescriptionAvatarSource: {instanceID: 0}
   animationType: 2
+  additionalBone: 0
   userData: 

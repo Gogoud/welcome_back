@@ -1,7 +1,7 @@
 fileFormatVersion: 2
 guid: f2606388eb78c4b4092f0ea14f27dad6
 ModelImporter:
-  serializedVersion: 15
+  serializedVersion: 16
   fileIDToRecycleName:
     100000: cgaxis_mo0
     100002: cgaxis_mo1
@@ -86,4 +86,5 @@ ModelImporter:
     rootMotionBoneName: 
   lastHumanDescriptionAvatarSource: {instanceID: 0}
   animationType: 2
+  additionalBone: 0
   userData: 

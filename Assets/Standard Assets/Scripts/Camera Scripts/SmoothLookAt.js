@@ -1,6 +1,6 @@
-var target : Transform;
+var target = GameObject.FindGameObjectWithTag("Player");
 var damping = 6.0;
-var smooth = true;
+var smooth = false;
 
 @script AddComponentMenu("Camera-Control/Smooth Look At")
 
@@ -15,13 +15,13 @@ function LateUpdate () {
 		else
 		{
 			// Just lookat
-		    transform.LookAt(target);
+		    transform.LookAt(target.transform.position);
 		}
 	}
 }
 
 function Start () {
 	// Make the rigid body not change rotation
-   	if (GetComponent.<Rigidbody>())
-		GetComponent.<Rigidbody>().freezeRotation = true;
+   //	if (GetComponent.<Rigidbody>())
+		//GetComponent.<Rigidbody>().freezeRotation = true;
 }

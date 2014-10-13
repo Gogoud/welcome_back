@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: c806eaf820deae644a68abb77ff6fed8
+guid: a09fdd76a41dfe54d8991aeda9baae5f
 ModelImporter:
   serializedVersion: 16
   fileIDToRecycleName:
@@ -7,8 +7,7 @@ ModelImporter:
     400000: //RootNode
     2300000: //RootNode
     3300000: //RootNode
-    4300000: polySurface180
-    4300002: Prop_Winerack
+    4300000: Prop_Winerack
     9500000: //RootNode
   materials:
     importMaterials: 0
@@ -18,6 +17,7 @@ ModelImporter:
     legacyGenerateAnimations: 4
     bakeSimulation: 0
     optimizeGameObjects: 0
+    motionNodeName: 
     animationCompression: 1
     animationRotationError: .5
     animationPositionError: .5

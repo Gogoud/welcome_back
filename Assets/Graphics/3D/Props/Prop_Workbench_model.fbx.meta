@@ -1,70 +1,13 @@
 fileFormatVersion: 2
-guid: 30417cf804f8ad54da1d8ba0067bba38
+guid: d3eb479305fb7d742a4301fd3b465d93
 ModelImporter:
   serializedVersion: 16
   fileIDToRecycleName:
-    100000: polySurface10
-    100002: polySurface11
-    100004: polySurface2
-    100006: polySurface3
-    100008: polySurface4
-    100010: polySurface5
-    100012: polySurface6
-    100014: polySurface7
-    100016: polySurface8
-    100018: polySurface9
-    100020: Prop_Workbench
-    100022: //RootNode
-    100024: Prop_WorkbenchVise
-    100026: Prop_WorkbenchViseBase
-    100028: Prop_WorkbenchViseSpiner
-    100030: transform10
-    100032: transform11
-    100034: transform3
-    100036: transform4
-    100038: transform5
-    100040: transform6
-    100042: transform7
-    100044: transform8
-    100046: transform9
-    400000: polySurface10
-    400002: polySurface11
-    400004: polySurface2
-    400006: polySurface3
-    400008: polySurface4
-    400010: polySurface5
-    400012: polySurface6
-    400014: polySurface7
-    400016: polySurface8
-    400018: polySurface9
-    400020: Prop_Workbench
-    400022: //RootNode
-    400024: Prop_WorkbenchVise
-    400026: Prop_WorkbenchViseBase
-    400028: Prop_WorkbenchViseSpiner
-    400030: transform10
-    400032: transform11
-    400034: transform3
-    400036: transform4
-    400038: transform5
-    400040: transform6
-    400042: transform7
-    400044: transform8
-    400046: transform9
-    2300000: Prop_Workbench
-    2300002: Prop_WorkbenchVise
-    2300004: Prop_WorkbenchViseBase
-    2300006: Prop_WorkbenchViseSpiner
-    2300008: //RootNode
-    3300000: Prop_Workbench
-    3300002: Prop_WorkbenchVise
-    3300004: Prop_WorkbenchViseBase
-    3300006: Prop_WorkbenchViseSpiner
-    3300008: //RootNode
-    4300000: Prop_WorkbenchVise
-    4300002: Prop_WorkbenchViseSpiner
-    4300004: Prop_WorkbenchViseBase
-    4300006: Prop_Workbench
+    100000: //RootNode
+    400000: //RootNode
+    2300000: //RootNode
+    3300000: //RootNode
+    4300000: Prop_Workbench
     9500000: //RootNode
   materials:
     importMaterials: 0
@@ -74,6 +17,7 @@ ModelImporter:
     legacyGenerateAnimations: 4
     bakeSimulation: 0
     optimizeGameObjects: 0
+    motionNodeName: 
     animationCompression: 1
     animationRotationError: .5
     animationPositionError: .5

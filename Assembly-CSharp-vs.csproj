@@ -49,6 +49,7 @@
      <Compile Include="Assets\ActivateGravity.cs" />
      <Compile Include="Assets\Godrays\GodRays.cs" />
      <Compile Include="Assets\Godrays\GodRaysReduction.cs" />
+     <Compile Include="Assets\Graphics\3D\TEMP\DigbyChaseLogic.cs" />
      <Compile Include="Assets\LockCursor.cs" />
      <Compile Include="Assets\NGUI\Scripts\Interaction\LanguageSelection.cs" />
      <Compile Include="Assets\NGUI\Scripts\Interaction\UIButton.cs" />

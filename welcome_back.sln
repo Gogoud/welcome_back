@@ -5,6 +5,8 @@ Project("{C50D7027-C783-6D27-0EEB-E0E8025221F1}") = "welcome_back", "Assembly-CS
 EndProject
 Project("{C50D7027-C783-6D27-0EEB-E0E8025221F1}") = "welcome_back", "Assembly-CSharp.csproj", "{E4C38223-3E8E-9DFE-BC09-963CCA39ED17}"
 EndProject
+Project("{C50D7027-C783-6D27-0EEB-E0E8025221F1}") = "welcome_back", "Assembly-CSharp-Editor-firstpass.csproj", "{E4738370-B188-714C-31E5-B04C1B09D806}"
+EndProject
 Project("{C50D7027-C783-6D27-0EEB-E0E8025221F1}") = "welcome_back", "Assembly-CSharp-Editor.csproj", "{17CE49AD-2050-CFA1-0FF0-319946698808}"
 EndProject
 Project("{C50D7027-C783-6D27-0EEB-E0E8025221F1}") = "welcome_back", "Assembly-UnityScript-firstpass.unityproj", "{CBBEBB1C-4F57-5FA4-748D-8DA2A4031B1D}"
@@ -27,6 +29,10 @@ Global
 		{E4C38223-3E8E-9DFE-BC09-963CCA39ED17}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E4C38223-3E8E-9DFE-BC09-963CCA39ED17}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E4C38223-3E8E-9DFE-BC09-963CCA39ED17}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E4738370-B188-714C-31E5-B04C1B09D806}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E4738370-B188-714C-31E5-B04C1B09D806}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E4738370-B188-714C-31E5-B04C1B09D806}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E4738370-B188-714C-31E5-B04C1B09D806}.Release|Any CPU.Build.0 = Release|Any CPU
 		{17CE49AD-2050-CFA1-0FF0-319946698808}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{17CE49AD-2050-CFA1-0FF0-319946698808}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{17CE49AD-2050-CFA1-0FF0-319946698808}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -47,7 +53,7 @@ Global
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
-																																																																																																																																																																																																																																																																																																																																																																																																																														GlobalSection(MonoDevelopProperties) = preSolution
+																																																																																																																																																																																																																																																																																																																																																																																																																																									GlobalSection(MonoDevelopProperties) = preSolution
 																																																		GlobalSection(MonoDevelopProperties) = preSolution
 																																																									GlobalSection(MonoDevelopProperties) = preSolution
 									GlobalSection(MonoDevelopProperties) = preSolution

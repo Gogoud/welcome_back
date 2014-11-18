@@ -12,9 +12,9 @@ using System.Collections;
 public class FirstPersonController : MonoBehaviour 
 {
 	#region PublicMemberVariables
-	public float m_MovementSpeed = 10.0f;
-	public float m_SprintSpeed	 = 15.0f;
-	public float m_ChrouchSpeed	 = 5.5f;
+	public  float m_MovementSpeed = 10.0f;
+	public  float m_SprintSpeed	 = 15.0f;
+	public  float m_ChrouchSpeed	 = 5.5f;
 
 	public float m_JumpForce	 = 1.0f;
 	public float m_Gravity		 = 5.0f;
@@ -124,6 +124,15 @@ public class FirstPersonController : MonoBehaviour
 		m_Locked = false;
 	}
 
+	public float getMovementSpeed()
+	{
+		return m_MovementSpeed;
+	}
+	public void setMovementSpeed(float newMovementSpeed)
+	{
+		m_MovementSpeed = newMovementSpeed;
+
+	}
 
 
 	void FixedUpdate()

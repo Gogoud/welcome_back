@@ -30,11 +30,11 @@ public class IngameMenu : MonoBehaviour
 		if (m_MenuActive) 
 		{
 			AnotherOnGUI();
-			m_Player.GetComponent<FirstPersonController>().m_LockAndHideMouse = false;
+			//m_Player.GetComponent<FirstPersonController>().m_LockAndHideMouse = false;
 		}
 		else
 		{
-			m_Player.GetComponent<FirstPersonController>().m_LockAndHideMouse = true;
+			//m_Player.GetComponent<FirstPersonController>().m_LockAndHideMouse = true;
 		}
 
 	}
@@ -56,7 +56,7 @@ public class IngameMenu : MonoBehaviour
 		//Time.timeScale = 1;
 		Camera.main.transform.parent.GetComponent<FirstPersonController> ().UnLockPlayerMovement();
 		Camera.main.GetComponent<FirstPersonCamera> ().UnLockCamera();
-		m_Player.GetComponent<FirstPersonController>().m_LockAndHideMouse = true;
+		//m_Player.GetComponent<FirstPersonController>().m_LockAndHideMouse = true;
 		m_GUITextures.SetActive(false);
 	}
 

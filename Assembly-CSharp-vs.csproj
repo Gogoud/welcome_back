@@ -255,6 +255,7 @@
      <Compile Include="Assets\Project Assets\Scripts\Triggers\TriggerTypes\OnClickTrigger.cs" />
      <Compile Include="Assets\Project Assets\Scripts\Triggers\TriggerTypes\ZoneTimerTrigger.cs" />
      <Compile Include="Assets\RotateSwing.cs" />
+     <Compile Include="Assets\Scripts\Corridor_Sequence.cs" />
      <Compile Include="Assets\TestTransformSpeed.cs" />
      <Compile Include="Assets\UnitySerializer\Scripts\AddSomeForce.cs" />
      <Compile Include="Assets\UnitySerializer\Scripts\AdditionalData.cs" />
